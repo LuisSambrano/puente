@@ -141,48 +141,58 @@ graph LR
 
 Este proyecto aprovecha el **ecosistema completo de Google AI y herramientas avanzadas de IA** para compensar la falta de experiencia técnica:
 
-### Google AI Ecosystem
+### Google AI Ecosystem (2026)
 
-**Gemini 2.0 Flash Experimental** 🚀
+**Gemini 3** 🚀
 
-- Modelo principal de desarrollo
-- Análisis de código en tiempo real
-- Generación de smart contracts
-- Debugging avanzado
+- **Modelo principal**: Gemini 3 Flash (sucesor de Gemini 2.0)
+- **Capacidades**: Razonamiento agéntico, multimodalidad avanzada
+- **Agentic Vision**: Análisis de imágenes con "Think, Act, Observe loop"
+- **Contexto**: 1 millón de tokens
+- **Uso**: Co-piloto principal de desarrollo, generación de smart contracts
 
 **Google AI Studio** 🎨
 
 - Prototipado rápido de prompts
-- Testing de modelos (Gemini 1.5 Pro, Flash, 2.0)
-- Generación de documentación
-- Experimentación con parámetros
+- Testing de modelos (Gemini 3 Pro, Flash)
+- Experimentación en tiempo real
+- API gratuita para desarrollo
+- **AI Studio Build**: Genera aplicaciones web completas desde prompts
 
-**NotebookLM** 📚
+**NotebookLM** (Powered by Gemini 3) 📚
 
-- Organización de documentación del buildathon
-- Síntesis de docs técnicas (Celo, Passport, v0)
+- Síntesis de documentación del buildathon
+- **Audio Overviews**: Podcasts en 80+ idiomas
+- Análisis de docs técnicas (Celo, Passport, v0)
 - Generación de insights de user research
-- Audio overviews para revisión rápida
+- **Límites aumentados**: 500 notebooks, 300 fuentes/notebook (Google AI Pro)
 
 **Gemini Deep Research** 🔍
 
 - Investigación de mercado automatizada
-- Análisis de competidores
 - Síntesis de datos de múltiples fuentes
+- Generación de reports con insights
 - Validación de hipótesis
 
 **Google Labs** 🧪
 
-- **Veo 2**: Generación de videos demo
-- **Imagen 3**: Assets visuales para UI
-- **Music AI**: Audio para videos de marketing
+- **Veo 3.1/3.2**: Generación de videos cinemáticos con audio nativo
+  - 1080p nativo, 4K upscaling
+  - Temporal consistency mejorada
+  - SynthID watermarking
+- **Imagen 3**: Generación de imágenes photo-realistic
+- **Nano Banana Pro**: Edición de imágenes con IA
+- **Lyria**: Generación de música y audio
+- **MusicFX DJ**: Herramienta de música generativa
 
-**Gems Personalizados** 💎
+**Google AI Pro** (Subscription) 💎
 
-- **Celo Expert**: Especializado en Celo/MiniPay/Viem
-- **UX Researcher**: Análisis de usuario y diseño
-- **Smart Contract Auditor**: Revisión de seguridad
-- **Community Manager**: Estrategia de contenido
+- Reemplaza "Gemini Advanced"
+- Acceso a Veo 2 para generación de video
+- Deep Research avanzado
+- 1M token context window
+- 20 Audio Overviews/día en NotebookLM
+- Personal Intelligence (integración con Gmail, Photos, YouTube)
 
 ### Claude Antigravity
 
@@ -191,39 +201,45 @@ Este proyecto aprovecha el **ecosistema completo de Google AI y herramientas ava
 - Skills personalizados para desarrollo
 - Automatización de tareas repetitivas
 - Generación de código consistente
+- Workflows optimizados
 
 **Rules & Workflows** 📋
 
 - Rules personalizadas para el proyecto
-- Workflows de desarrollo optimizados
+- Workflows de desarrollo
 - Automatización de documentación
+- Integración con MCP servers
 
 **MCP Servers** 🔌
 
-- Supabase MCP: Gestión de base de datos
-- Google Maps Platform (futuro): Geolocalización
+- **Supabase MCP**: Gestión de base de datos
+- **Google Maps Platform** (futuro): Geolocalización
+- Extensibilidad para nuevas integraciones
 
 ### Herramientas Complementarias
 
 **v0 by Vercel** 🎨
 
-- Generación de componentes UI
+- Generación de componentes UI desde prompts
 - Iteración rápida de diseño
 - Templates móvil-first
+- Exportación directa a código
 
 **Supabase** 🗄️
 
 - Database PostgreSQL
-- Auth y RLS
+- Auth y Row Level Security (RLS)
 - Edge Functions
 - Real-time subscriptions
+- Integración con MCP
 
 **Vercel** ⚡
 
 - Hosting y deployment
-- Edge Network
-- Analytics
-- Preview deployments
+- Edge Network global
+- Analytics integrado
+- Preview deployments automáticos
+- Integración con Next.js 14
 
 ### Ventaja Competitiva
 
@@ -232,10 +248,19 @@ Este proyecto aprovecha el **ecosistema completo de Google AI y herramientas ava
 **Impacto medible**:
 
 - **10x** velocidad de desarrollo
-- **$0** en costos de equipo (vs $200K+/año)
+- **$0** en costos de equipo (vs $200K+/año para equipo humano)
 - **100%** de documentación generada con IA
 - **4,000+** líneas de docs en 2 semanas
-- **0** bugs críticos (gracias a revisión de IA)
+- **0** bugs críticos (gracias a revisión multi-modelo de IA)
+- **Agentic AI**: Automatización de workflows complejos
+
+**Fuentes**:
+
+- [Google Blog - Gemini 3](https://blog.google)
+- [Google AI Studio](https://aistudio.google.com)
+- [NotebookLM](https://notebooklm.google.com)
+- [Google Labs](https://labs.google)
+- [Gemini AI](https://gemini.google)
 
 ---
 
