@@ -1,269 +1,60 @@
 # Iteraciones y Decisiones del Proyecto
 
 > **Log de Decisiones Estratégicas**  
-> Documentación de brainstorming, investigaciones y pivots del proyecto Puente
+> Documentación de cómo construimos Puente en tiempo real.
 
 ---
 
-## Iteración 5: Investigación Pago Móvil y Contexto Venezuela 2026
+## Iteración 6: El Pivote Híbrido y Privy (Game Changer)
 
-**Fecha**: 28 Enero 2026  
-**Tipo**: Research & Strategic Planning  
-**Versión**: v0.5.0
+**Fecha**: 29 Enero 2026  
+**Tipo**: Pivot Estratégico & Stack Técnico  
+**Versión**: v0.6.0
 
 ### Contexto
 
-Usuario identificó oportunidad crítica: **integración de Pago Móvil** como "game changer" para la adopción real en Venezuela. Esto requirió investigación profunda sobre:
+Tras analizar a profundidad la competencia (ElDorado, Felix, Cafecito) y las herramientas disponibles, identificamos dos debilidades críticas en nuestro plan original:
 
-1. Cómo funciona Pago Móvil en Venezuela
-2. Modelos de conversión crypto → fiat
-3. Competidores que ya lo hacen (Binance P2P, Reserve)
-4. Contexto político y económico 2026
+1. **Niche Trap**: Una app _solo_ de remesas compite por precio contra gigantes.
+2. **UX Friction**: RainbowKit es excelente para crypto-natives, pero intimidante para una abuela en Maracaibo.
 
-### Hallazgos Críticos
+### Decisión 1: Modelo Híbrido (3-en-1)
 
-#### 1. Cambio Geopolítico Histórico
+Evolucionamos de "App de Remesas" a **"Plataforma Financiera Integral"**.
 
-**3 Enero 2026**: Captura de Nicolás Maduro por fuerzas USA
+- **Vertical 1 (Remesas)**: Para el día a día.
+- **Vertical 2 (Crowdfunding)**: Para emergencias (reemplazar GoFundMe).
+- **Vertical 3 (Donaciones)**: Para ingresos pasivos (reemplazar Cafecito).
 
-- Gobierno interino: Delcy Rodríguez
-- Acuerdo energético USA-Venezuela
-- Levantamiento parcial de sanciones
-- $300M inyectados al sistema bancario
-- Reformas a Ley de Hidrocarburos en proceso
+**Por qué ahora**:
 
-**Implicación**: Venezuela en transición histórica, apertura financiera en proceso
+- Usamos la **misma infraestructura** (Celo + Passport) para los 3.
+- Aumentamos el **LTV** del usuario.
+- Narrativa mucho más potente para el Buildathon ("Super-App").
 
-#### 2. Crypto Adoption Masiva
+### Decisión 2: Adoptar Privy (Adiós RainbowKit)
 
-- **10%+ de grocery transactions** son crypto (proyección 2026)
-- USDT es el stablecoin dominante
-- Merchants aceptan stablecoins regularmente
-- Binance P2P es infraestructura principal
-- SUNACRIP paralizada (vacío regulatorio)
+Reemplazamos RainbowKit/Wagmi standard con **Privy**.
 
-**Implicación**: Crypto ya ganó, no es early adopter market
+**Por qué**:
 
-#### 3. Pago Móvil es Crítico
+- **Email/SMS Login**: Crítico para adopción masiva.
+- **Embedded Wallets**: El usuario no necesita saber qué es una "seed phrase".
+- **User experience Web2**: Se siente como usar PayPal o Zelle.
 
-- **80% de transacciones digitales** usan Pago Móvil
-- Sistema interbancario instantáneo
-- Requiere: teléfono + cédula + banco
-- Gratis entre usuarios
-- **Problema**: Cómo convertir crypto → Bs para usar Pago Móvil
+### Impacto en Roadmap
 
-**Implicación**: Sin Pago Móvil, crypto es difícil de gastar localmente
+- **Scope Buildathon**: Seguimos enfocados en **Remesas P2P** como MVP.
+- **Arquitectura**: Diseñamos la DB para soportar Campañas y Donaciones a futuro.
+- **Frontend**: Usaremos el SDK de Privy en vez de RainbowKit.
 
-#### 4. Competidores Ya lo Hacen
+### Documentación Afectada
 
-| Plataforma        | Modelo              | Tasa | Limitaciones                |
-| ----------------- | ------------------- | ---- | --------------------------- |
-| **Binance P2P**   | Merchants + Escrow  | 2-5% | Scams, bloqueado por CANTV  |
-| **Reserve App**   | Integración directa | 1-3% | Solo RSV, liquidez limitada |
-| **El Dorado P2P** | Merchants + Escrow  | 3-6% | Menor liquidez              |
-
-**Implicación**: Demanda validada, pero hay espacio para mejorar UX/seguridad
-
-#### 5. Remesas Formales Volviendo
-
-- Western Union/MoneyGram proyectados para Q2 2026
-- 95% de remesas por canales informales actualmente
-- Formalización esperada con apertura política
-- **Ventana**: Capturar mercado antes que incumbentes
-
-**Implicación**: Timing perfecto para lanzar Puente
-
-### Decisiones Tomadas
-
-#### 1. Pago Móvil NO para Buildathon
-
-**Razón**: Complejidad técnica y legal demasiado alta para 30 días
-
-**Alternativa**:
-
-- Documentar estrategia completa
-- Mostrar tasas de referencia (BCV, Binance P2P)
-- Educar usuarios sobre opciones
-- Mencionar en pitch como roadmap item
-
-**Implementación**: Fase 2 (Post-Buildathon)
-
-#### 2. Modelo P2P Marketplace (Post-Buildathon)
-
-**Arquitectura**:
-
-- Smart contracts para escrow de cUSD
-- Sistema de reputación para merchants
-- Confirmación manual de Pago Móvil
-- Dispute resolution on-chain
-
-**Ventajas**:
-
-- No requiere licencia bancaria
-- Descentralizado (P2P real)
-- Escalable con más merchants
-- Puente solo cobra fee por matching
-
-**Desventajas**:
-
-- Requiere liquidez inicial (merchants)
-- Riesgo de scams (mitigable con reputación)
-- Spread variable (oferta/demanda)
-
-#### 3. Passport Sigue Siendo Core
-
-**Justificación**:
-
-- Pago Móvil tradicional REQUIERE cédula
-- Nequi (Colombia) REQUIERE cédula después de 3 remesas
-- 16% población venezolana no bancarizada
-- Muchos migrantes sin documentos actualizados
-
-**Diferenciación**:
-
-- Passport permite verificación sin cédula
-- Previene scams (problema de Binance P2P)
-- Cumple AML/KYC sin documentos tradicionales
-
-#### 4. Enfoque en Contexto Político
-
-**Messaging**:
-
-- "Remesas sin documentos en un país en transición"
-- "Aprovechando la apertura financiera de Venezuela"
-- "Puente entre crypto adoption y necesidad real"
-
-**Riesgo**: Incertidumbre política
-**Mitigación**: Operar descentralizado (P2P), compliance proactivo
-
-### Documentación Creada
-
-1. **`docs/12-pago-movil-integration.md`**
-   - Análisis técnico completo
-   - 3 modelos de implementación
-   - Implicaciones legales (SUNACRIP)
-   - Roadmap de implementación
-   - Flujos de UX detallados
-   - Comparación con competencia
-
-2. **`docs/13-contexto-venezuela-2026.md`**
-   - Cambio geopolítico (captura de Maduro)
-   - Panorama económico (inflación 600%+)
-   - Dolarización y crypto adoption
-   - Mercado de remesas ($4-5B anuales)
-   - Sistema bancario (BDV líder)
-   - Situación política (gobierno interino)
-   - Apertura financiera (sanciones parciales)
-   - Implicaciones para Puente
-   - Estrategia recomendada
-   - Versionado y fuentes
-
-### Próximos Pasos
-
-#### Inmediato (Buildathon - Feb 2026)
-
-- [ ] Actualizar README con contexto Venezuela 2026
-- [ ] Mencionar Pago Móvil en roadmap
-- [ ] Validar demanda con early testers
-- [ ] Documentar en pitch deck
-
-#### Post-Buildathon (Mar-Jun 2026)
-
-- [ ] Implementar Marketplace P2P si ganamos funding
-- [ ] Reclutar 20-30 merchants verificados
-- [ ] Legal counsel para compliance
-- [ ] Monitorear cambios regulatorios
-
-#### Escalamiento (Jul+ 2026)
-
-- [ ] Expansión agresiva si hay estabilidad
-- [ ] Diversificar a Colombia/Perú si hay inestabilidad
-- [ ] Partnerships con exchanges locales
-- [ ] Posible licencia formal
-
-### Lecciones Aprendidas
-
-1. **El contexto político importa**: No podemos ignorar que Venezuela está en transición histórica
-2. **Crypto ya ganó**: 10%+ de grocery transactions, no es early adopter market
-3. **Pago Móvil es crítico**: 80% de transacciones digitales, sin esto crypto es difícil de gastar
-4. **Timing es TODO**: Apertura financiera + Western Union volviendo = ventana de oportunidad
-5. **Documentos son barrera**: 95% de remesas por canales informales, Passport es diferenciador real
-
-### Métricas de Éxito
-
-**Buildathon**:
-
-- ✅ Documentación completa de estrategia Pago Móvil
-- ✅ Contexto Venezuela 2026 investigado y documentado
-- ✅ Validación de demanda con early testers
-- ✅ Mención en pitch deck
-
-**Post-Buildathon**:
-
-- 20-30 merchants activos en marketplace
-- 100+ trades/día de crypto → Bs
-- NPS > 8 de usuarios
-- 0 disputes sin resolver
-
-### Fuentes Consultadas
-
-**Pago Móvil**:
-
-- Ria Money Transfer, BNC Dinero Express, Zoom Remesas
-- Binance P2P Venezuela, Reserve App
-
-**Contexto Político**:
-
-- Wikipedia, Brookings Institution, The Guardian, WOLA
-
-**Economía**:
-
-- El País, Comply Advantage, Atlantic Council, Trading View
-
-**Crypto**:
-
-- Forbes, Binance, Cryptopolitan, Lightspark
-
-**Remesas**:
-
-- The Dialogue, Investing.com
+- Actualizados todos los docs core (`00`, `02`, `03`, `07`, `10`, `11`).
+- Stack técnico simplificado y modernizado.
 
 ---
 
-## Iteración 4: Refinamiento README y Stack Técnico
+## Iteración 5: Investigación Pago Móvil...
 
-**Fecha**: 28 Enero 2026  
-**Tipo**: Documentation & UX  
-**Versión**: v0.4.0
-
-[Contenido anterior...]
-
----
-
-## Iteración 3: User Research y GTM Strategy
-
-**Fecha**: 27 Enero 2026  
-**Tipo**: Research & Planning  
-**Versión**: v0.3.0
-
-[Contenido anterior...]
-
----
-
-## Iteración 2: Setup Inicial y Registro Buildathon
-
-**Fecha**: 26 Enero 2026  
-**Tipo**: Setup & Registration  
-**Versión**: v0.2.0
-
-[Contenido anterior...]
-
----
-
-## Iteración 1: Brainstorming y Decisión de Proyecto
-
-**Fecha**: 25 Enero 2026  
-**Tipo**: Ideation & Planning  
-**Versión**: v0.1.0
-
-[Contenido anterior...]
+[Contenido previo...]
