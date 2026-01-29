@@ -121,19 +121,71 @@ graph LR
 
 ## 🛠️ Stack Técnico
 
+### Blockchain & Ecosystem
+
 <div align="center">
 
-| Categoría      | Tecnología                                                                                                                                                                      | Por Qué                            |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| **Blockchain** | ![Celo](https://img.shields.io/badge/Celo-FCFF52?style=flat&logo=celo&logoColor=black)                                                                                          | Móvil-first, transacciones baratas |
-| **Wallet**     | ![MiniPay](https://img.shields.io/badge/MiniPay-00D4AA?style=flat)                                                                                                              | Accesible desde el teléfono        |
-| **Identidad**  | ![Passport](https://img.shields.io/badge/Human.Tech%20Passport-4A90E2?style=flat)                                                                                               | Verificación sin documentos        |
-| **Frontend**   | ![Next.js](https://img.shields.io/badge/Next.js%2014-000000?style=flat&logo=next.js) ![Viem](https://img.shields.io/badge/Viem-646CFF?style=flat)                               | App Router + Fee abstraction       |
-| **UI**         | ![v0](https://img.shields.io/badge/v0-000000?style=flat&logo=vercel) ![Shadcn](https://img.shields.io/badge/Shadcn%2FUI-000000?style=flat)                                      | Componentes móvil-first            |
-| **Backend**    | ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel) | Database + Hosting                 |
-| **Contracts**  | ![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat&logo=solidity) ![Hardhat](https://img.shields.io/badge/Hardhat-FFF100?style=flat)                           | Smart contracts + Testing          |
+| Categoría       | Tecnología                                                                                                                | Por Qué                                  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| **Blockchain**  | ![Celo](https://img.shields.io/badge/Celo-FCFF52?style=flat&logo=celo&logoColor=black)                                    | Ethereum L2, móvil-first, EVM-compatible |
+| **Wallet**      | ![MiniPay](https://img.shields.io/badge/MiniPay-00D4AA?style=flat)                                                        | Self-custodial, integrado en Opera Mini  |
+| **Identidad**   | ![Passport](https://img.shields.io/badge/Human.Tech%20Passport-4A90E2?style=flat)                                         | Proof-of-personhood sin documentos       |
+| **Stablecoins** | ![cUSD](https://img.shields.io/badge/cUSD-FCFF52?style=flat) ![USDC](https://img.shields.io/badge/USDC-2775CA?style=flat) | Gas currencies, remesas                  |
 
 </div>
+
+**Celo Ecosystem**:
+
+- **Native Token**: CELO
+- **Stable Assets**: cUSD, cEUR, cREAL, eXOF
+- **Stablecoins**: USDC, USDT (también como gas currencies)
+- **DeFi Infrastructure**: Aave, Uniswap V3, Curve, Velodrome, Chainlink
+
+### Frontend & UI
+
+<div align="center">
+
+| Categoría         | Tecnología                                                                                                                                       | Por Qué                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| **Framework**     | ![Next.js](https://img.shields.io/badge/Next.js%2014-000000?style=flat&logo=next.js)                                                             | App Router, SSR, optimizado para Web3    |
+| **Web3 Library**  | ![Viem](https://img.shields.io/badge/Viem-646CFF?style=flat) ![Wagmi](https://img.shields.io/badge/Wagmi-1C1B1B?style=flat)                      | Fee abstraction nativa, TypeScript-first |
+| **UI Components** | ![Shadcn](https://img.shields.io/badge/Shadcn%2FUI-000000?style=flat) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat) | Componentes accesibles, móvil-first      |
+| **UI Generation** | ![v0](https://img.shields.io/badge/v0-000000?style=flat&logo=vercel)                                                                             | Generación de componentes con IA         |
+
+</div>
+
+**Celo Composer** (Oficial):
+
+- Soporte para: React, React Native (con/sin Expo), Angular, Flutter
+- Subgraph integration
+- Templates optimizados para MiniPay
+
+### Backend & Infrastructure
+
+<div align="center">
+
+| Categoría           | Tecnología                                                                                                                                            | Por Qué                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| **Database**        | ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)                                                    | PostgreSQL, Auth, RLS, Edge Functions |
+| **Hosting**         | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel)                                                                          | Edge Network, deployment automático   |
+| **Smart Contracts** | ![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat&logo=solidity) ![Hardhat](https://img.shields.io/badge/Hardhat-FFF100?style=flat) | Testing, deployment en Celo Mainnet   |
+
+</div>
+
+### MiniPay Integration
+
+**Features utilizadas**:
+
+- Phone numbers como wallet addresses
+- Fast, low-cost stablecoin transactions
+- Built-in app discovery page
+- Standalone app (Android/iOS) + Opera Mini integration
+
+**Optimizaciones**:
+
+- Detección automática de MiniPay
+- Fee abstraction (pagar gas con cUSD)
+- UI móvil-first (touch-optimized)
 
 ---
 
@@ -442,58 +494,142 @@ Este proyecto documenta **TODO** el proceso de construcción de forma transparen
 
 ### Estrategia de Lanzamiento
 
-**Fase Alpha** (Mar 1-15) - Validación
+> **Deadline del Buildathon**: 27 Febrero 2026, 20:59 ART (23:59 UTC)
 
-- 10-20 early adopters cuidadosamente seleccionados
-- Testnet (Alfajores) para pruebas seguras
-- Feedback intensivo diario
-- Iteración rápida basada en uso real
+**Fase Pre-Lanzamiento** (Ahora - Feb 10) - Construcción y Validación
 
-**Fase Beta Privada** (Mar 16-31) - Escala Controlada
+- Desarrollo del MVP funcional
+- Testing en Celo Alfajores (testnet)
+- Identificar 5-10 early testers
+- Documentación completa del proceso (VibeCoding)
+- Preparar materiales de presentación
 
-- 50 usuarios activos (invite-only)
-- Mainnet con montos limitados
-- $5,000+ en volumen objetivo
-- Programa de incentivos para early adopters
+**Fase Alpha** (Feb 11-20) - Testing en Mainnet
 
-**Fase Beta Pública** (Abr 1-30) - Crecimiento
+- Deploy en Celo Mainnet
+- Testing con 10-15 early adopters
+- Generar transacciones reales (bonus del buildathon)
+- Recolectar feedback intensivo
+- Iterar basado en uso real
+- Objetivo: 20+ transacciones en Mainnet
 
-- 200+ usuarios activos
-- Campaña en redes sociales
-- Programa de referidos ($5 cUSD)
-- Partnerships con comunidades venezolanas
+**Fase Submission** (Feb 21-27) - Preparación Final
 
-**Fase Crecimiento** (May+) - Escala
+- Pulir UI/UX basado en feedback
+- Grabar video demo (máx 3 min)
+- Crear presentación (pitch deck)
+- Preparar GitHub repository público
+- Submission vía Karma Gap
+- **Deadline**: 27 Feb, 20:59 ART
 
-- 500+ usuarios activos
+**Post-Buildathon** (Mar+) - Crecimiento
+
+- Análisis de resultados del buildathon
+- Implementar feedback de jueces
+- Lanzamiento público si ganamos funding
+- Escalar a 50-100 usuarios
 - Partnerships con exchanges locales
-- Expansión a Colombia/Perú
-- Features de neo-banco (ahorro, pagos)
 
 ### Canales de Comunidad
 
 **Twitter/X** (@PuenteRemesas) 🐦
 
-- **Propósito**: Awareness, updates, engagement
-- **Frecuencia**: 3-5 posts/semana
-- **Contenido**: Progreso VibeCoding, tips de remesas, historias de usuarios
+- **Propósito**: Awareness, updates, VibeCoding en público
+- **Frecuencia**: 3-5 posts/semana durante buildathon
+- **Contenido**:
+  - Progreso diario de desarrollo
+  - Decisiones técnicas explicadas
+  - Problemas y soluciones
+  - Milestones alcanzados
 
 **Telegram** (Comunidad Puente) 💬
 
-- **Propósito**: Soporte, feedback, comunidad
-- **Moderación**: 24/7 (bot + humano)
-- **Contenido**: Anuncios, soporte técnico, networking
+- **Propósito**: Soporte, feedback, early testers
+- **Moderación**: Activa durante buildathon
+- **Contenido**: Anuncios, testing, feedback directo
 
 **Discord** (Desarrolladores) 🎮
 
-- **Propósito**: Comunidad técnica, contributors
-- **Canales**: #general, #desarrollo, #feedback, #ideas
+- **Propósito**: Comunidad técnica, open source
+- **Canales**: #general, #desarrollo, #feedback
 
-**WhatsApp** (Soporte 1-on-1) 📱
+**WhatsApp** (Soporte Early Testers) 📱
 
-- **Propósito**: Soporte personalizado
-- **Horario**: 9am-9pm Venezuela/USA
-- **SLA**: < 2 horas respuesta
+- **Propósito**: Soporte directo para testers
+- **Horario**: Flexible durante buildathon
+- **SLA**: < 4 horas respuesta
+
+### Programa de Early Testers
+
+**Objetivo**: 10-15 testers para fase alpha
+
+**Perfil ideal**:
+
+- Venezolanos en el exterior (remitentes)
+- Familiarizados con crypto/stablecoins
+- Dispuestos a probar en Mainnet con montos pequeños
+- Feedback activo
+
+**Beneficios**:
+
+- Acceso primero a la plataforma
+- Reconocimiento en documentación
+- Posible airdrop si ganamos funding
+- Influencia directa en el producto
+
+**Responsabilidades**:
+
+- Realizar 2-3 transacciones de prueba
+- Reportar bugs y problemas de UX
+- Feedback honesto y detallado
+- Disponibilidad para llamadas de testing
+
+### Métricas de Éxito (Buildathon)
+
+**Técnicas**:
+
+- ✅ Deploy funcional en Celo Mainnet
+- ✅ 20+ transacciones reales generadas
+- ✅ 0 bugs críticos en producción
+- ✅ Video demo profesional
+- ✅ Documentación completa (VibeCoding)
+
+**Producto**:
+
+- 10-15 early testers activos
+- NPS > 7 de testers
+- Tiempo promedio de transacción < 2 minutos
+- Tasa de éxito de transacciones > 95%
+
+**Comunidad**:
+
+- 50+ seguidores en Twitter
+- 20+ miembros en Telegram
+- 10+ estrellas en GitHub
+- 3+ menciones en comunidad Celo
+
+**Bounties**:
+
+- ✅ Human.Tech Passport integrado (embeds)
+- ✅ v0 usado para UI generation
+- ✅ Template público compartido
+
+### Objetivos Post-Buildathon
+
+**Si ganamos** (Top 3 MiniApps):
+
+- Usar funding para escalar
+- Contratar community manager part-time
+- Marketing pagado en comunidades venezolanas
+- Partnerships con exchanges
+- Expansión a Colombia/Perú
+
+**Si no ganamos**:
+
+- Continuar desarrollo como open source
+- Buscar funding alternativo (grants, VCs)
+- Crecer orgánicamente
+- Aplicar aprendizajes a v2
 
 ### Programa de Embajadores
 
