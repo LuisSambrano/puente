@@ -139,6 +139,10 @@ Una vez Celo Composer termine:
 - ✅ RentPay clonado para referencia
 - ✅ Documentación inicial completa
 - ✅ Primer commit pusheado
+- ✅ GitHub conectado con Vercel
+- ⏳ Proyecto Supabase pendiente
 - ⏳ Celo Composer pendiente
 
-**Siguiente**: Ejecutar Celo Composer
+**Siguiente**: Crear proyecto Supabase y ejecutar Celo Composer
+
+[Ver guía de Vercel →](14-vercel-setup.md)
