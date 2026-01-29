@@ -191,128 +191,33 @@ graph LR
 
 ## 🤖 Ecosistema Google & IA
 
-Este proyecto aprovecha el **ecosistema completo de Google AI y herramientas avanzadas de IA** para compensar la falta de experiencia técnica:
+> **Sin este ecosistema de IA, este proyecto no sería posible.** Como "One Man Army" sin experiencia previa en Celo/Web3, estas herramientas actúan como un **equipo completo de 10+ personas**.
 
-### Google AI Ecosystem (2026)
+### Herramientas Principales
 
-**Gemini 3** 🚀
+<div align="center">
 
-- **Modelo principal**: Gemini 3 Flash (sucesor de Gemini 2.0)
-- **Capacidades**: Razonamiento agéntico, multimodalidad avanzada
-- **Agentic Vision**: Análisis de imágenes con "Think, Act, Observe loop"
-- **Contexto**: 1 millón de tokens
-- **Uso**: Co-piloto principal de desarrollo, generación de smart contracts
+| Herramienta              | Por Qué                      | Cómo                                                 | Para Qué                                                     |
+| ------------------------ | ---------------------------- | ---------------------------------------------------- | ------------------------------------------------------------ |
+| **Gemini 3 Flash**       | Modelo más avanzado (2026)   | Co-piloto de desarrollo, 1M tokens context           | Generación de smart contracts, debugging, análisis de código |
+| **Google AI Studio**     | Prototipado rápido           | Testing de modelos, API gratuita                     | Experimentación con prompts, generación de componentes       |
+| **NotebookLM**           | Síntesis de docs             | Audio Overviews en 80+ idiomas                       | Organizar docs del buildathon, insights de user research     |
+| **Gemini Deep Research** | Investigación automatizada   | Síntesis de múltiples fuentes                        | Análisis de mercado, validación de hipótesis                 |
+| **Google Labs**          | Herramientas creativas       | Veo 3.1 (video), Imagen 3 (imágenes), Lyria (música) | Videos demo, assets visuales, contenido de marketing         |
+| **Claude Antigravity**   | Automatización de desarrollo | Skills, Rules, Workflows, MCP Servers                | Generación de código consistente, integración con Supabase   |
+| **v0 by Vercel**         | UI generation con IA         | Prompts → Componentes React                          | Acelerar desarrollo de UI móvil-first                        |
 
-**Google AI Studio** 🎨
+</div>
 
-- Prototipado rápido de prompts
-- Testing de modelos (Gemini 3 Pro, Flash)
-- Experimentación en tiempo real
-- API gratuita para desarrollo
-- **AI Studio Build**: Genera aplicaciones web completas desde prompts
+### Impacto Medible
 
-**NotebookLM** (Powered by Gemini 3) 📚
+- **10x** velocidad de desarrollo vs equipo tradicional
+- **$0** en costos de equipo (vs $200K+/año para 10 personas)
+- **100%** de documentación generada con IA (4,000+ líneas)
+- **0** bugs críticos gracias a revisión multi-modelo
+- **Agentic AI**: Automatización de workflows complejos end-to-end
 
-- Síntesis de documentación del buildathon
-- **Audio Overviews**: Podcasts en 80+ idiomas
-- Análisis de docs técnicas (Celo, Passport, v0)
-- Generación de insights de user research
-- **Límites aumentados**: 500 notebooks, 300 fuentes/notebook (Google AI Pro)
-
-**Gemini Deep Research** 🔍
-
-- Investigación de mercado automatizada
-- Síntesis de datos de múltiples fuentes
-- Generación de reports con insights
-- Validación de hipótesis
-
-**Google Labs** 🧪
-
-- **Veo 3.1/3.2**: Generación de videos cinemáticos con audio nativo
-  - 1080p nativo, 4K upscaling
-  - Temporal consistency mejorada
-  - SynthID watermarking
-- **Imagen 3**: Generación de imágenes photo-realistic
-- **Nano Banana Pro**: Edición de imágenes con IA
-- **Lyria**: Generación de música y audio
-- **MusicFX DJ**: Herramienta de música generativa
-
-**Google AI Pro** (Subscription) 💎
-
-- Reemplaza "Gemini Advanced"
-- Acceso a Veo 2 para generación de video
-- Deep Research avanzado
-- 1M token context window
-- 20 Audio Overviews/día en NotebookLM
-- Personal Intelligence (integración con Gmail, Photos, YouTube)
-
-### Claude Antigravity
-
-**Antigravity Skills** 🛠️
-
-- Skills personalizados para desarrollo
-- Automatización de tareas repetitivas
-- Generación de código consistente
-- Workflows optimizados
-
-**Rules & Workflows** 📋
-
-- Rules personalizadas para el proyecto
-- Workflows de desarrollo
-- Automatización de documentación
-- Integración con MCP servers
-
-**MCP Servers** 🔌
-
-- **Supabase MCP**: Gestión de base de datos
-- **Google Maps Platform** (futuro): Geolocalización
-- Extensibilidad para nuevas integraciones
-
-### Herramientas Complementarias
-
-**v0 by Vercel** 🎨
-
-- Generación de componentes UI desde prompts
-- Iteración rápida de diseño
-- Templates móvil-first
-- Exportación directa a código
-
-**Supabase** 🗄️
-
-- Database PostgreSQL
-- Auth y Row Level Security (RLS)
-- Edge Functions
-- Real-time subscriptions
-- Integración con MCP
-
-**Vercel** ⚡
-
-- Hosting y deployment
-- Edge Network global
-- Analytics integrado
-- Preview deployments automáticos
-- Integración con Next.js 14
-
-### Ventaja Competitiva
-
-> **Sin este ecosistema de IA, este proyecto no sería posible.** Como "One Man Army" sin experiencia previa en Celo, Web3, o Next.js, estas herramientas actúan como un **equipo completo de 10+ personas**.
-
-**Impacto medible**:
-
-- **10x** velocidad de desarrollo
-- **$0** en costos de equipo (vs $200K+/año para equipo humano)
-- **100%** de documentación generada con IA
-- **4,000+** líneas de docs en 2 semanas
-- **0** bugs críticos (gracias a revisión multi-modelo de IA)
-- **Agentic AI**: Automatización de workflows complejos
-
-**Fuentes**:
-
-- [Google Blog - Gemini 3](https://blog.google)
-- [Google AI Studio](https://aistudio.google.com)
-- [NotebookLM](https://notebooklm.google.com)
-- [Google Labs](https://labs.google)
-- [Gemini AI](https://gemini.google)
+**Fuentes**: [Google AI](https://ai.google.dev) • [NotebookLM](https://notebooklm.google.com) • [Google Labs](https://labs.google) • [v0](https://v0.dev)
 
 ---
 
@@ -492,13 +397,17 @@ Este proyecto documenta **TODO** el proceso de construcción de forma transparen
 
 ## 🌱 Comunidad y Crecimiento
 
-> **Deadline del Buildathon**: 27 Febrero 2026, 20:59 ART (23:59 UTC)
+<div align="center">
+
+![Countdown](<https://img.shields.io/badge/dynamic/json?url=https://timeapi.io/api/Time/current/zone?timeZone=America/Argentina/Buenos_Aires&query=$.dateTime&label=Deadline&suffix=%20(27%20Feb%202026)&color=red&style=for-the-badge&logo=clock>)
+
+**Deadline del Buildathon**: 27 Febrero 2026, 20:59 ART (23:59 UTC)
+
+</div>
 
 ### Timeline del Buildathon
 
 ```
-[████████░░░░░░░░░░░░] 30 días restantes
-
 Ahora - Feb 10     │ Feb 11-20        │ Feb 21-27         │ Mar+
 Pre-Lanzamiento    │ Alpha Testing    │ Submission        │ Post-Buildathon
 ─────────────────────────────────────────────────────────────────────
