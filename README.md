@@ -492,210 +492,69 @@ Este proyecto documenta **TODO** el proceso de construcción de forma transparen
 
 ## 🌱 Comunidad y Crecimiento
 
-### Estrategia de Lanzamiento
-
 > **Deadline del Buildathon**: 27 Febrero 2026, 20:59 ART (23:59 UTC)
 
-**Fase Pre-Lanzamiento** (Ahora - Feb 10) - Construcción y Validación
+### Timeline del Buildathon
 
-- Desarrollo del MVP funcional
-- Testing en Celo Alfajores (testnet)
-- Identificar 5-10 early testers
-- Documentación completa del proceso (VibeCoding)
-- Preparar materiales de presentación
+```
+[████████░░░░░░░░░░░░] 30 días restantes
 
-**Fase Alpha** (Feb 11-20) - Testing en Mainnet
+Ahora - Feb 10     │ Feb 11-20        │ Feb 21-27         │ Mar+
+Pre-Lanzamiento    │ Alpha Testing    │ Submission        │ Post-Buildathon
+─────────────────────────────────────────────────────────────────────
+• MVP funcional    │ • Deploy Mainnet │ • Video demo      │ • Análisis
+• Testnet testing  │ • 10-15 testers  │ • Pitch deck      │ • Feedback jueces
+• 5-10 early users │ • 20+ tx reales  │ • Karma Gap       │ • Escalar si ganamos
+```
 
-- Deploy en Celo Mainnet
-- Testing con 10-15 early adopters
-- Generar transacciones reales (bonus del buildathon)
-- Recolectar feedback intensivo
-- Iterar basado en uso real
-- Objetivo: 20+ transacciones en Mainnet
+### Canales Activos
 
-**Fase Submission** (Feb 21-27) - Preparación Final
+<div align="center">
 
-- Pulir UI/UX basado en feedback
-- Grabar video demo (máx 3 min)
-- Crear presentación (pitch deck)
-- Preparar GitHub repository público
-- Submission vía Karma Gap
-- **Deadline**: 27 Feb, 20:59 ART
+| Canal                              | Propósito                           | Estado          |
+| ---------------------------------- | ----------------------------------- | --------------- |
+| 🐦 **Twitter** [@PuenteRemesas](#) | VibeCoding público, progreso diario | 🟢 Activo       |
+| 💬 **Telegram** [Comunidad](#)     | Early testers, feedback directo     | 🟢 Activo       |
+| 🎮 **Discord** [Developers](#)     | Comunidad técnica, open source      | 🟡 Próximamente |
 
-**Post-Buildathon** (Mar+) - Crecimiento
+</div>
 
-- Análisis de resultados del buildathon
-- Implementar feedback de jueces
-- Lanzamiento público si ganamos funding
-- Escalar a 50-100 usuarios
-- Partnerships con exchanges locales
+### Early Testers (10-15 personas)
 
-### Canales de Comunidad
+**Buscamos**:
 
-**Twitter/X** (@PuenteRemesas) 🐦
-
-- **Propósito**: Awareness, updates, VibeCoding en público
-- **Frecuencia**: 3-5 posts/semana durante buildathon
-- **Contenido**:
-  - Progreso diario de desarrollo
-  - Decisiones técnicas explicadas
-  - Problemas y soluciones
-  - Milestones alcanzados
-
-**Telegram** (Comunidad Puente) 💬
-
-- **Propósito**: Soporte, feedback, early testers
-- **Moderación**: Activa durante buildathon
-- **Contenido**: Anuncios, testing, feedback directo
-
-**Discord** (Desarrolladores) 🎮
-
-- **Propósito**: Comunidad técnica, open source
-- **Canales**: #general, #desarrollo, #feedback
-
-**WhatsApp** (Soporte Early Testers) 📱
-
-- **Propósito**: Soporte directo para testers
-- **Horario**: Flexible durante buildathon
-- **SLA**: < 4 horas respuesta
-
-### Programa de Early Testers
-
-**Objetivo**: 10-15 testers para fase alpha
-
-**Perfil ideal**:
-
-- Venezolanos en el exterior (remitentes)
-- Familiarizados con crypto/stablecoins
-- Dispuestos a probar en Mainnet con montos pequeños
-- Feedback activo
+- Venezolanos en el exterior familiarizados con crypto
+- Dispuestos a probar en Mainnet (montos pequeños)
+- Feedback activo durante Feb 11-20
 
 **Beneficios**:
 
 - Acceso primero a la plataforma
-- Reconocimiento en documentación
-- Posible airdrop si ganamos funding
-- Influencia directa en el producto
+- Reconocimiento en docs
+- Posible airdrop si ganamos
 
-**Responsabilidades**:
+**Interesado?** → [Únete al Telegram](#)
 
-- Realizar 2-3 transacciones de prueba
-- Reportar bugs y problemas de UX
-- Feedback honesto y detallado
-- Disponibilidad para llamadas de testing
+### Métricas de Éxito
 
-### Métricas de Éxito (Buildathon)
-
-**Técnicas**:
+**Buildathon** (Críticas):
 
 - ✅ Deploy funcional en Celo Mainnet
-- ✅ 20+ transacciones reales generadas
-- ✅ 0 bugs críticos en producción
-- ✅ Video demo profesional
-- ✅ Documentación completa (VibeCoding)
+- ✅ 20+ transacciones reales
+- ✅ Video demo + pitch deck
+- ✅ Human.Tech Passport + v0 integrados
 
-**Producto**:
+**Producto** (Targets):
 
 - 10-15 early testers activos
-- NPS > 7 de testers
-- Tiempo promedio de transacción < 2 minutos
-- Tasa de éxito de transacciones > 95%
+- NPS > 7
+- Tiempo de transacción < 2 min
+- Tasa de éxito > 95%
 
-**Comunidad**:
+**Post-Buildathon**:
 
-- 50+ seguidores en Twitter
-- 20+ miembros en Telegram
-- 10+ estrellas en GitHub
-- 3+ menciones en comunidad Celo
-
-**Bounties**:
-
-- ✅ Human.Tech Passport integrado (embeds)
-- ✅ v0 usado para UI generation
-- ✅ Template público compartido
-
-### Objetivos Post-Buildathon
-
-**Si ganamos** (Top 3 MiniApps):
-
-- Usar funding para escalar
-- Contratar community manager part-time
-- Marketing pagado en comunidades venezolanas
-- Partnerships con exchanges
-- Expansión a Colombia/Perú
-
-**Si no ganamos**:
-
-- Continuar desarrollo como open source
-- Buscar funding alternativo (grants, VCs)
-- Crecer orgánicamente
-- Aplicar aprendizajes a v2
-
-### Programa de Embajadores
-
-**Objetivo**: 10 embajadores en primeros 3 meses
-
-**Perfil ideal**:
-
-- Venezolanos en el exterior (remitentes activos)
-- Activos en redes sociales
-- Apasionados por crypto/fintech
-- Experiencia enviando remesas
-
-**Beneficios**:
-
-- Acceso temprano a features
-- Fees reducidos (0.5% vs 1%)
-- Swag exclusivo
-- Reconocimiento público
-
-**Responsabilidades**:
-
-- Compartir experiencia en redes (1 post/semana)
-- Referir 5+ usuarios/mes
-- Feedback constante
-- Participar en eventos
-
-### Métricas de Crecimiento
-
-**Adquisición**:
-
-- Sign-ups/semana
-- Fuente de tráfico (orgánico, referidos, paid)
-- Costo de adquisición (CAC target: $10-15)
-
-**Activación**:
-
-- % que completan onboarding (target: 50%)
-- % que verifican con Passport (target: 80%)
-- Tiempo promedio de onboarding (target: <5 min)
-
-**Retención**:
-
-- DAU/MAU (target: 40%)
-- % usuarios con 2+ transacciones (target: 30%)
-- Churn rate (target: <20%/mes)
-
-**Revenue**:
-
-- Volumen de transacciones
-- Fees generados
-- Transacción promedio (target: $200)
-
-**Referral**:
-
-- % usuarios que refieren (target: 20%)
-- Referidos por usuario (target: 2)
-- Tasa de conversión de referidos (target: 30%)
-
-### Objetivos por Fase
-
-| Fase             | Usuarios | Volumen | NPS | Transacciones |
-| ---------------- | -------- | ------- | --- | ------------- |
-| **Alpha**        | 10-20    | -       | >7  | 10+           |
-| **Beta Privada** | 50       | $5K     | >8  | 50+           |
-| **Beta Pública** | 200      | $20K    | >8  | 200+          |
-| **Crecimiento**  | 500+     | $50K+   | >9  | 1,000+        |
+- **Si ganamos**: Usar funding para escalar, contratar community manager, marketing pagado
+- **Si no ganamos**: Continuar como open source, buscar grants/VCs alternativos
 
 [Ver estrategia completa →](docs/10-gtm-strategy.md)
 
