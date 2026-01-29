@@ -121,6 +121,54 @@ graph LR
 
 ---
 
+## 🇻🇪 Contexto Venezuela 2026
+
+> **Timing Perfecto**: Venezuela en transición histórica, apertura financiera en proceso
+
+### Cambio Geopolítico (Enero 2026)
+
+**3 Enero 2026**: Captura de Nicolás Maduro por fuerzas USA
+
+- **Gobierno Interino**: Delcy Rodríguez (Vice-presidenta)
+- **Acuerdo Energético**: USA-Venezuela, levantamiento parcial de sanciones
+- **Inyección de Capital**: $300M de ventas de petróleo al sistema bancario
+- **Reformas**: Ley de Hidrocarburos, nueva ley de minería
+
+**Fuente**: [Wikipedia](https://wikipedia.org) • [El País](https://elpais.com) • [Brookings](https://brookings.edu)
+
+### Apertura Financiera
+
+**Western Union & MoneyGram**:
+
+- **Proyección Q2 2026**: Reapertura de corredor de remesas formales
+- **Oportunidad**: Formalización de 95% de mercado informal ($4-5B anuales)
+- **Ventana**: Capturar mercado antes que incumbentes
+
+**Crypto Adoption**:
+
+- **80% de transacciones digitales** usan Pago Móvil - [Binance](https://binance.com)
+- **Stablecoins** como "mejores dólares" para survival
+- **SUNACRIP** paralizada desde Marzo 2023 (vacío regulatorio) - [Lightspark](https://lightspark.com)
+
+### Implicaciones para Puente
+
+**Oportunidades**:
+
+- ✅ Timing perfecto (transición histórica)
+- ✅ Crypto ya adoptado masivamente (10%+ grocery)
+- ✅ Necesidad de inclusión financiera (95% informal)
+- ✅ Pago Móvil crítico (80% transacciones digitales)
+
+**Diferenciación**:
+
+- ✅ **Passport**: Verificación sin documentos (vs cédula requerida)
+- ✅ **P2P**: Descentralizado, sin intermediarios
+- ✅ **Roadmap**: Integración Pago Móvil post-buildathon
+
+[Ver análisis completo →](docs/13-contexto-venezuela-2026.md)
+
+---
+
 ## 🛠️ Stack Técnico
 
 ### Blockchain & Ecosystem
@@ -311,6 +359,92 @@ Puente no es solo remesas. Es el **futuro neo-banco digital para la diáspora ve
 - **2027**: Colombia (2.8M venezolanos)
 - **2028**: Perú, Ecuador, Chile
 - **2029+**: Toda LatAm (50M+ migrantes, $150B+ en remesas) - [World Bank](https://www.worldbank.org)
+
+[Ver visión completa →](docs/07-mision-vision.md)
+
+---
+
+## 💱 Roadmap: Integración Pago Móvil
+
+> **Game Changer**: Convertir crypto → bolívares para gastar localmente
+
+### El Problema
+
+**Receptor recibe cUSD, pero necesita bolívares para**:
+
+- Pagar servicios (luz, agua, internet)
+- Comprar en comercios locales
+- Enviar dinero a familiares vía Pago Móvil
+
+**Pago Móvil** es crítico:
+
+- **80% de transacciones digitales** en Venezuela
+- Sistema interbancario instantáneo
+- Gratis entre usuarios
+- **Problema**: Requiere cédula venezolana
+
+### Competidores que Ya lo Hacen
+
+| Plataforma        | Modelo              | Tasa | Limitaciones                |
+| ----------------- | ------------------- | ---- | --------------------------- |
+| **Binance P2P**   | Merchants + Escrow  | 2-5% | Scams, bloqueado por CANTV  |
+| **Reserve App**   | Integración directa | 1-3% | Solo RSV, liquidez limitada |
+| **El Dorado P2P** | Merchants + Escrow  | 3-6% | Menor liquidez              |
+
+### Nuestra Solución (Post-Buildathon)
+
+**Marketplace P2P Interno**:
+
+```mermaid
+graph TB
+    A[Usuario recibe cUSD] --> B{¿Qué hacer?}
+    B -->|Opción 1| C[Mantener cUSD]
+    B -->|Opción 2| D[Marketplace P2P]
+
+    D --> E[Ver ofertas de merchants]
+    E --> F[Seleccionar mejor oferta]
+    F --> G[Smart contract escrow]
+    G --> H[Merchant envía Bs vía Pago Móvil]
+    H --> I[Usuario confirma recepción]
+    I --> J[Smart contract libera cUSD]
+
+    style C fill:#3FB950
+    style D fill:#FCFF52
+    style J fill:#00D4AA
+```
+
+**Ventajas**:
+
+- ✅ Sin licencia bancaria (P2P puro)
+- ✅ Merchants verificados con Passport
+- ✅ Sistema de reputación robusto
+- ✅ Escrow automático vía smart contract
+- ✅ Tasa competitiva: 3-6% total
+
+**Fases**:
+
+**Fase 1 (Buildathon - Feb 2026)**:
+
+- Mostrar tasas de referencia (BCV, Binance P2P)
+- Educar usuarios sobre opciones
+- Documentar estrategia completa
+- **NO implementar** (muy complejo para 30 días)
+
+**Fase 2 (Post-Buildathon - Mar-Jun 2026)**:
+
+- Implementar Marketplace P2P si ganamos funding
+- Reclutar 20-30 merchants verificados
+- Legal counsel para compliance SUNACRIP
+- Objetivo: 100+ trades/día
+
+**Fase 3 (Escalamiento - Jul+ 2026)**:
+
+- Partnership con exchange local (Reserve, El Dorado)
+- API integration para tasas en tiempo real
+- Expansión a Colombia/Perú
+- Posible licencia formal
+
+[Ver análisis técnico completo →](docs/12-pago-movil-integration.md)
 
 ---
 
