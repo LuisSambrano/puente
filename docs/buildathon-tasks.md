@@ -1,205 +1,76 @@
-# One Man Army - Buildathon Tasks
+# One Man Army - Buildathon Tasks (Híbrido + Privy)
 
-## Fase 0: Definición y Setup (Ene 28-30)
+## Fase 1: Setup Moderno (Ene 29 - Feb 2)
 
-- [x] Investigar buildathon LatAm Hubs
-- [x] Definir problema a resolver (remesas Venezuela)
-- [x] Decidir tracks (MiniApps + bounties)
-- [x] Documentar decisiones iniciales
-- [ ] Crear repositorio GitHub
-- [ ] Inicializar proyecto local
-- [ ] Setup Supabase project
-- [ ] Registrar equipo y obtener 3 CELO
+### Identidad & Wallet (Privy) ✅
 
-## Fase 1: Aprendizaje Básico (Ene 31 - Feb 2)
+- [ ] Crear cuenta en dashboard.privy.io
+- [ ] Configurar App ID en env vars
+- [ ] Configurar Login Methods (Email, Google, SMS)
+- [ ] Customizar branding (Logo Puente, colores)
 
-### Celo
+### Celo & Base
 
-- [ ] Tutorial básico de Celo
-- [ ] Entender Celo Mainnet vs Alfajores
-- [ ] Crear wallet de prueba
-- [ ] Primera transacción en testnet
+- [ ] Configurar Viem con Celo Mainnet
+- [ ] Setup Celo Composer (limpieza de template default)
+- [ ] Deploy "Hello World" a Vercel
 
-### Next.js
+### Passport
 
-- [ ] Tutorial oficial de Next.js
-- [ ] Entender App Router
-- [ ] Crear primera página
-- [ ] Deploy en Vercel
+- [ ] Obtener API Keys de Human.Tech
+- [ ] Integrar scorer básico en frontend
 
-### MiniPay
+---
 
-- [ ] Leer documentación de MiniPay
-- [ ] Entender integración
-- [ ] Probar MiniPay como usuario
+## Fase 2: Core MVP - Remesas (Feb 3 - Feb 9)
 
-### Human.Tech Passport
+### Smart Contracts
 
-- [ ] Leer docs de Passport
-- [ ] Entender Passport Embeds
-- [ ] Probar demo de Passport
+- [ ] `PuenteRemesas.sol`: Contrato simple de custodia y envío.
+- [ ] Tests en Hardhat.
+- [ ] Deploy a Celo Mainnet.
 
-## Fase 2: MVP Básico (Feb 3-9)
+### Frontend (v0 + Privy)
 
-### Setup Técnico
+- [ ] **Auth Screen**: Login con Privy.
+- [ ] **Dashboard**: Ver saldo cUSD (v0).
+- [ ] **Send Flow**: Input dirección/email -> Confirmar -> Firmar (v0).
+- [ ] **Transactions**: Lista de envíos recientes (Supabase).
 
-- [ ] Inicializar Next.js con TypeScript
-- [ ] Configurar TailwindCSS
-- [ ] Integrar v0
-- [ ] Setup Supabase client
+---
 
-### Wallet Connection
+## Fase 3: Integración & Tracción (Feb 10 - Feb 16)
 
-- [ ] Integrar RainbowKit o similar
-- [ ] Conectar wallet en UI
-- [ ] Mostrar balance de CELO
+### Backend (Supabase)
 
-### Primera Transferencia
-
-- [ ] UI para enviar CELO
-- [ ] Lógica de transferencia básica
-- [ ] Confirmación de transacción
-- [ ] Deploy en Vercel
-
-### Mentoría 1
-
-- [ ] Agendar sesión
-- [ ] Preparar preguntas
-- [ ] Validar arquitectura
-- [ ] Documentar feedback
-
-## Fase 3: Passport + Core Logic (Feb 10-16)
-
-### Passport Integration
-
-- [ ] Integrar Passport embed
-- [ ] Flujo de verificación
-- [ ] Guardar estado en Supabase
-- [ ] UI de verificación
-
-### Database Schema
-
-- [ ] Diseñar schema en Supabase
-- [ ] Tabla de usuarios
-- [ ] Tabla de transacciones
-- [ ] Tabla de verificaciones
-
-### Lógica de Remesas
-
-- [ ] Crear remesa (sender)
-- [ ] Notificar receptor
-- [ ] Aceptar remesa (receiver)
-- [ ] Historial de transacciones
-
-## Fase 4: Features Completas (Feb 17-23)
-
-### UI/UX con v0
-
-- [ ] Generar componentes con v0
-- [ ] Landing page
-- [ ] Dashboard de usuario
-- [ ] Historial de transacciones
-- [ ] Responsive design
-
-### Notificaciones
-
-- [ ] Email notifications (Supabase)
-- [ ] In-app notifications
-- [ ] Estado de transacciones
-
-### Optimizaciones
-
-- [ ] Optimizar gas fees
-- [ ] Loading states
-- [ ] Error handling
-- [ ] Validaciones
-
-### Mentoría 2
-
-- [ ] Agendar sesión
-- [ ] Review de optimizaciones
-- [ ] Feedback de UX
-- [ ] Documentar aprendizajes
-
-## Fase 5: Testing y Polish (Feb 24-26)
+- [ ] Tabla `users`: Mapear Privy DID -> Datos perfil.
+- [ ] Tabla `transactions`: Log de txs on-chain.
 
 ### Testing
 
-- [ ] Testing manual exhaustivo
-- [ ] Testing en diferentes devices
-- [ ] Testing con usuarios reales
-- [ ] Fix de bugs críticos
+- [ ] 5 usuarios Alpha (One Man Army friends).
+- [ ] Probar flujo completo: Login -> Send -> Receive.
+- [ ] Verificar fees en block explorer.
 
-### Deployment
+---
 
-- [ ] Deploy final en Vercel
-- [ ] Deploy en Celo Mainnet
-- [ ] Verificar todo funciona
-- [ ] Monitorear transacciones
+## Fase 4: Narrativa Híbrida & Polish (Feb 17 - Feb 27)
 
-### Branding
+### UI "Super-App"
 
-- [ ] Logo de "Puente"
-- [ ] Agregar badge "Built with v0"
-- [ ] Agregar badge "Powered by Human.Tech"
-- [ ] Agregar badge "Built on Celo"
+- [ ] Agregar Tabs visuales: "Remesas" (Activo), "Ayuda" (Coming Soon), "Creadores" (Coming Soon).
+- [ ] Landing Page actualizada con visión 3-en-1.
 
-## Fase 6: Submission (Feb 27)
+### Submission
 
-### Documentación
+- [ ] **Video Demo**: Enfocado en la facilidad de uso (Privy) y la visión (Híbrida).
+- [ ] **Pitch Deck**: "Zelle + GoFundMe + Cafecito de LATAM".
+- [ ] **Karma Gap**: Subir todo antes del deadline.
 
-- [ ] README completo
-- [ ] Documentación de API
-- [ ] Guía de setup
-- [ ] Arquitectura diagram
+---
 
-### Video Demo (3 min)
+## Tareas Roadmap (Post-Buildathon)
 
-- [ ] Script del video
-- [ ] Grabar demo
-- [ ] Editar video
-- [ ] Subir a YouTube
-
-### Presentación
-
-- [ ] Crear deck (10-15 slides)
-- [ ] Problema y solución
-- [ ] Demo screenshots
-- [ ] Métricas de uso
-- [ ] Roadmap futuro
-
-### Karma Gap
-
-- [ ] Crear perfil de proyecto
-- [ ] Subir video demo
-- [ ] Subir presentación
-- [ ] Link a GitHub
-- [ ] Link a live demo
-- [ ] Submit antes de 20:59 Argentina
-
-### Mentoría 3 (Opcional)
-
-- [ ] Review pre-submission
-- [ ] Últimos ajustes
-- [ ] Validar completitud
-
-## VibeCoding - Documentación Continua
-
-- [ ] Documentar proceso de aprendizaje
-- [ ] Documentar decisiones técnicas
-- [ ] Documentar problemas y soluciones
-- [ ] Documentar uso de IA tools
-- [ ] Documentar integración de skills
-- [ ] Commits frecuentes con mensajes claros
-- [ ] README actualizado continuamente
-
-## Métricas de Éxito
-
-- [ ] Proyecto funcional en Mainnet
-- [ ] Passport integrado
-- [ ] UI con v0
-- [ ] Al menos 50 transacciones
-- [ ] 10+ usuarios reales
-- [ ] Video demo profesional
-- [ ] Documentación completa
-- [ ] Proceso de aprendizaje documentado
+- [ ] Smart Contracts para Crowdfunding (Escrow condicional).
+- [ ] Widget de donaciones para creadores.
+- [ ] Integración de off-ramp (Pago Móvil/P2P Marketplace).
