@@ -29,14 +29,14 @@ const config = {
           foreground: "#FFFFFF",
         },
         "bridge-brand": {
-          bg: "#F9FAFB",
-          surface: "#FFFFFF",
-          text: "#111827",
-          accent: "#E8F5EE",
+          bg: "hsl(var(--background))",
+          surface: "hsl(var(--card))",
+          text: "hsl(var(--foreground))",
+          accent: "hsl(var(--accent))",
         },
         secondary: {
-          DEFAULT: "#2A2C34",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

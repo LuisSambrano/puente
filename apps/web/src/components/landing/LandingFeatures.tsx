@@ -29,10 +29,10 @@ const features = [
 
 export function LandingFeatures() {
   return (
-    <section className="min-h-screen w-full snap-start flex items-center justify-center bg-bridge-brand-bg dark:bg-slate-900 py-20">
+    <section className="min-h-screen w-full snap-start flex items-center justify-center bg-background py-20">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-bridge-brand-text dark:text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             Construido para la <span className="text-primary">Vida Real</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
@@ -68,10 +68,10 @@ export function LandingFeatures() {
                 />
               </div>
 
-              <h3 className="text-xl font-bold mb-3 text-slate-900 dark:text-white tracking-tight">
+              <h3 className="text-xl font-bold mb-3 text-foreground tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+              <p className="text-muted-foreground leading-relaxed font-medium">
                 {feature.description}
               </p>
             </motion.div>

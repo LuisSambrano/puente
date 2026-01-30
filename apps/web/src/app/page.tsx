@@ -13,7 +13,7 @@ export default function Home() {
   // Loading State
   if (!ready) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-background text-foreground">
         <div className="animate-pulse">Loading Puente...</div>
       </main>
     );
