@@ -9,6 +9,7 @@ _Built for [LatAm Hubs Buildathon 2026](https://latamhubs.lat/) • MiniApps Tra
 [![Network: Celo](https://img.shields.io/badge/Network-Celo%20L2-FCFF52?style=for-the-badge&logo=celo&logoColor=black)](https://celo.org)
 [![Stack: Next.js 14](https://img.shields.io/badge/Stack-Next.js%2014-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![Auth: Privy](https://img.shields.io/badge/Auth-Privy-blue?style=for-the-badge)](https://privy.io)
+[![Vercel: Deployed](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://vercel.com)
 
 </div>
 
