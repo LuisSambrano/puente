@@ -98,3 +98,5 @@ Thumbs.db
 
 # Turbo
 .turbo
+.vercel
+.env*.local
