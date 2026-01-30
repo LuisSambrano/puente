@@ -49,7 +49,7 @@ export function LandingFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] shadow-sm hover:shadow-lg transition-all border border-slate-100 dark:border-slate-800 relative group overflow-hidden"
+              className="glass-deep-frost p-8 rounded-[2rem] shadow-sm hover:shadow-lg transition-all border border-white/20 relative group overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-4 opacity-50">
                 <feature.icon
