@@ -7,9 +7,12 @@ const config = {
     "./src/app/**/*.{ts,tsx}",
     "./src/features/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: "",
   theme: {
+    transparent: "transparent",
+    current: "currentColor",
     container: {
       center: true,
       padding: "2rem",
@@ -19,14 +22,44 @@ const config = {
     },
     extend: {
       colors: {
+        tremor: {
+          brand: {
+            faint: "#eff6ff", // blue-50
+            muted: "#bfdbfe", // blue-200
+            subtle: "#60a5fa", // blue-400
+            DEFAULT: "#3b82f6", // blue-500
+            emphasis: "#1d4ed8", // blue-700
+            inverted: "#ffffff", // white
+          },
+          background: {
+            muted: "#f9fafb", // gray-50
+            subtle: "#f3f4f6", // gray-100
+            DEFAULT: "#ffffff", // white
+            emphasis: "#374151", // gray-700
+          },
+          border: {
+            DEFAULT: "#e5e7eb", // gray-200
+          },
+          ring: {
+            DEFAULT: "#e5e7eb", // gray-200
+          },
+          content: {
+            subtle: "#9ca3af", // gray-400
+            DEFAULT: "#6b7280", // gray-500
+            emphasis: "#374151", // gray-700
+            strong: "#111827", // gray-900
+            inverted: "#ffffff", // white
+          },
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))", // MiniPay Mint
-          foreground: "#FFFFFF",
+          DEFAULT: "#2ECC71", // Puente Green (Brand Color)
+          foreground: "hsl(var(--primary-foreground))",
+          hover: "#27AE60", // Secondary Green (Hover)
         },
         "bridge-brand": {
           bg: "hsl(var(--background))",
@@ -35,7 +68,7 @@ const config = {
           accent: "hsl(var(--accent))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#95A5A6", // Neutral Gray
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -43,12 +76,12 @@ const config = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#ECF0F1", // Light Gray (Cards/Inputs)
+          foreground: "#95A5A6", // Neutral Gray Text
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#27AE60", // Secondary Green
+          foreground: "#FFFFFF",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
