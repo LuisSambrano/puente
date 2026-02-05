@@ -12,8 +12,7 @@ Plataforma de remessas P2P para América Latina construída na blockchain Celo.
   <a href="https://github.com/LuisSambrano/puente-fintech-dapp/blob/main/LICENSE"><img src="https://img.shields.io/github/license/LuisSambrano/puente-fintech-dapp?style=flat-square" alt="License"/></a>
 </p>
 
-> [!IMPORTANT]
-> **Licencia**: Este proyecto está licenciado bajo [Business Source License 1.1](LICENSE).
+> [!IMPORTANT] > **Licencia**: Este proyecto está licenciado bajo [Business Source License 1.1](LICENSE).
 > Puedes ver y estudiar el código fuente con fines educativos, pero **el uso comercial requiere una licencia separada**.
 > Ver [LICENSE](LICENSE) para términos completos.
 
@@ -134,6 +133,18 @@ Contribuições são bem-vindas. Por favor siga estas diretrizes:
 5. Push para seu fork: `git push origin feature/descricao`
 6. Envie um pull request com descrição detalhada
 
+## 🔬 Pesquisa e Registro de Decisões
+
+Este projeto segue uma metodologia **Research-First**. Todas as decisões estratégicas estão documentadas:
+
+| Documento                                     | Propósito                                      |
+| --------------------------------------------- | ---------------------------------------------- |
+| [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) | Insights destilados da pesquisa                |
+| [prompts/](./research/prompts/)               | Módulos de investigação com tracking           |
+| [docs/](./docs)                               | Documentos originais de pesquisa (26 arquivos) |
+
+> 💡 **Para IAs**: Leia `KEY_FINDINGS.md` primeiro para contexto máximo sobre decisões, pivôs e justificativas.
+
 ## Licença
 
 Licença MIT - Veja [LICENSE](LICENSE) para detalhes.
@@ -142,6 +153,8 @@ Licença MIT - Veja [LICENSE](LICENSE) para detalhes.
 
 - **Repositório**: [github.com/LuisSambrano/puente](https://github.com/LuisSambrano/puente)
 - **Autor**: [Luis Sambrano](https://github.com/LuisSambrano)
+- **Documentação**: [docs/](./docs)
+- **Pesquisa**: [research/](./research)
 - **Documentação Celo**: [docs.celo.org](https://docs.celo.org)
 
 ---

@@ -217,6 +217,18 @@ Este proyecto sigue [Conventional Commits](https://www.conventionalcommits.org/)
 
 Ejemplo: `feat(wallet): agregar soporte de autenticación passkey`
 
+## 🔬 Investigación y Registro de Decisiones
+
+Este proyecto sigue una metodología **Research-First**. Todas las decisiones estratégicas están documentadas:
+
+| Documento                                     | Propósito                                            |
+| --------------------------------------------- | ---------------------------------------------------- |
+| [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) | Hallazgos destilados de la investigación             |
+| [prompts/](./research/prompts/)               | Módulos de investigación con tracking                |
+| [docs/](./docs)                               | Documentos originales de investigación (26 archivos) |
+
+> 💡 **Para IAs**: Lee `KEY_FINDINGS.md` primero para contexto máximo sobre decisiones, pivotes y justificaciones.
+
 ## Licencia
 
 Licencia MIT - Ver [LICENSE](LICENSE) para detalles.
@@ -226,6 +238,7 @@ Licencia MIT - Ver [LICENSE](LICENSE) para detalles.
 - **Repositorio**: [github.com/LuisSambrano/puente](https://github.com/LuisSambrano/puente)
 - **Autor**: [Luis Sambrano](https://github.com/LuisSambrano)
 - **Documentación**: [docs/](./docs)
+- **Investigación**: [research/](./research)
 - **Docs Celo**: [docs.celo.org](https://docs.celo.org)
 
 ---
