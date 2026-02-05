@@ -227,7 +227,7 @@ Este proyecto sigue una metodología **Research-First**. Todas las decisiones es
 | [prompts/](./research/prompts/)               | Módulos de investigación con tracking                |
 | [docs/](./docs)                               | Documentos originales de investigación (26 archivos) |
 
-> 💡 **Para IAs**: Lee `KEY_FINDINGS.md` primero para contexto máximo sobre decisiones, pivotes y justificaciones.
+> **Resumen Ejecutivo**: Ver [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) para insights destilados y decisiones arquitectónicas.
 
 ## Licencia
 

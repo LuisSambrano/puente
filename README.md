@@ -239,7 +239,7 @@ This project follows a **Research-First** methodology. All strategic decisions a
 | [prompts/](./research/prompts/)               | Investigation modules with tracking    |
 | [docs/](./docs)                               | Original research documents (26 files) |
 
-> 💡 **For AIs**: Read `KEY_FINDINGS.md` first for maximum context on decisions, pivots, and rationale.
+> **Executive Summary**: See [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) for distilled insights and architectural decisions.
 
 ## License
 

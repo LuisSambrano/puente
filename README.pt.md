@@ -184,7 +184,7 @@ Este projeto segue uma metodologia **Research-First**. Todas as decisões estrat
 | [prompts/](./research/prompts/)               | Módulos de investigação com tracking           |
 | [docs/](./docs)                               | Documentos originais de pesquisa (26 arquivos) |
 
-> 💡 **Para IAs**: Leia `KEY_FINDINGS.md` primeiro para contexto máximo sobre decisões, pivôs e justificativas.
+> **Resumo Executivo**: Veja [KEY_FINDINGS.md](./research/KEY_FINDINGS.md) para insights destilados e decisões arquitetônicas.
 
 ## Licença
 
