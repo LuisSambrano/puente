@@ -55,7 +55,7 @@ graph TD
 
 ### Blockchain Integration
 
-- **Celo L2 Settlement**: Sub-5 second transaction finality
+- **Celo L2 Settlement**: Fast finality (<5s)
 - **cUSD Stablecoin**: Protection from local currency volatility
 - **Smart Contracts**: Verified contracts on Celo Sepolia for secure fund routing
 - **Gas Abstraction**: Transaction fees under $0.01
@@ -68,7 +68,7 @@ graph TD
 
 ### User Experience
 
-- **Glassmorphism 2.0**: Modern translucent UI with depth and hierarchy
+- **Glassmorphism UI**: Translucent modern interface with depth and hierarchy
 - **Dynamic Theming**: Light/dark mode support (Solaris/Obsidian themes)
 - **Privacy Controls**: Sensitive balances obfuscated by default until authenticated
 - **Mobile-First**: PWA optimized for MiniPay (Opera Mini) and low-bandwidth networks
@@ -186,7 +186,7 @@ puente/
 │   │   │   ├── lib/           # Utilities and configurations
 │   │   │   └── types/         # TypeScript definitions
 │   │   └── public/            # Static assets
-│   └── hardhat/               # Smart contract development
+│   └── contracts/             # Smart contract development
 │       ├── contracts/         # Solidity contracts
 │       ├── scripts/           # Deployment scripts
 │       └── test/              # Contract tests

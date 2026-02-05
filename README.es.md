@@ -43,7 +43,7 @@ graph TD
 
 ### Integración Blockchain
 
-- **Liquidación Celo L2**: Finalidad de transacción en menos de 5 segundos
+- **Liquidación Celo L2**: Finalidad rápida (<5s)
 - **Stablecoin cUSD**: Protección contra volatilidad de moneda local
 - **Smart Contracts**: Contratos verificados en Celo Sepolia para enrutamiento seguro de fondos
 - **Abstracción de Gas**: Comisiones de transacción bajo $0.01
@@ -56,7 +56,7 @@ graph TD
 
 ### Experiencia de Usuario
 
-- **Glassmorphism 2.0**: UI translúcida moderna con profundidad y jerarquía
+- **Glassmorphism UI**: Interfaz translúcida moderna con profundidad y jerarquía
 - **Tematización Dinámica**: Soporte de modo claro/oscuro (temas Solaris/Obsidian)
 - **Controles de Privacidad**: Balances sensibles ofuscados por defecto hasta autenticación
 - **Mobile-First**: PWA optimizada para MiniPay (Opera Mini) y redes de bajo ancho de banda
@@ -174,7 +174,7 @@ puente/
 │   │   │   ├── lib/           # Utilidades y configuraciones
 │   │   │   └── types/         # Definiciones TypeScript
 │   │   └── public/            # Assets estáticos
-│   └── hardhat/               # Desarrollo de smart contracts
+│   └── contracts/             # Desarrollo de smart contracts
 │       ├── contracts/         # Contratos Solidity
 │       ├── scripts/           # Scripts de despliegue
 │       └── test/              # Tests de contratos

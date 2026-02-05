@@ -16,20 +16,39 @@ Plataforma de remessas P2P para América Latina construída na blockchain Celo.
 > Puedes ver y estudiar el código fuente con fines educativos, pero **el uso comercial requiere una licencia separada**.
 > Ver [LICENSE](LICENSE) para términos completos.
 
-## Visão Geral
+## Arquitetura
 
-Puente é uma aplicação de remessas não-custodial projetada para reduzir fricção em pagamentos cross-border para usuários em economias de alta inflação. A plataforma utiliza a blockchain L2 da Celo e stablecoin cUSD para fornecer transferências internacionais rápidas e de baixo custo com interface mobile-first.
+```mermaid
+graph TD
+    A[Frontend Next.js 14] --> B[Capa de Auth Privy]
+    B --> C[Carteira Embutida]
 
-A aplicação aborda uma necessidade financeira crítica na América Latina, onde serviços tradicionais de remessa cobram em média 15% em taxas e levam dias para liquidar. Usando tecnologia blockchain e stablecoins, Puente reduz custos de transação para menos de $0.01 e liquida transferências em menos de 5 segundos.
+    A --> D[Backend Supabase]
+    D --> E[Banco de Dados PostgreSQL]
+    D --> F[Edge Functions]
 
-Construída como progressive web app (PWA) otimizada para integração MiniPay, a plataforma prioriza acessibilidade para usuários em redes de baixa largura de banda mantendo interface profissional e intuitiva.
+    C --> G[Rede Celo L2]
+    G --> H[Stablecoin cUSD]
+    G --> I[Smart Contracts]
+
+    A --> J[SocialConnect/ODIS]
+    J --> K[Mapeamento Telefone-Endereço]
+
+    I --> L[Contrato de Remessas]
+    I --> M[Contrato de Escrow]
+
+    style G fill:#FCFF52,stroke:#000,color:#000
+    style H fill:#FCFF52,stroke:#000,color:#000
+    style A fill:#000,stroke:#fff,color:#fff
+    style D fill:#3ECF8E
+```
 
 ## Características
 
 ### Integração Blockchain
 
-- **Liquidação Celo L2**: Finalidade de transação sub-5 segundos
-- **Stablecoin cUSD**: Proteção contra volatilidade de moeda local
+- **Liquidação Celo L2**: Finalidade rápida (<5s)
+- **Stablecoin cUSD**: Proteção contra volatilidade da moeda local
 - **Smart Contracts**: Contratos verificados na Celo Sepolia para roteamento seguro de fundos
 - **Abstração de Gas**: Taxas de transação abaixo de $0.01
 
@@ -41,7 +60,7 @@ Construída como progressive web app (PWA) otimizada para integração MiniPay, 
 
 ### Experiência do Usuário
 
-- **Glassmorphism 2.0**: UI translúcida moderna com profundidade e hierarquia
+- **Glassmorphism UI**: Interface translúcida moderna com profundidade e hierarquia
 - **Temas Dinâmicos**: Suporte a modo claro/escuro (temas Solaris/Obsidian)
 - **Controles de Privacidade**: Saldos sensíveis obscurecidos por padrão até autenticação
 - **Mobile-First**: PWA otimizada para MiniPay (Opera Mini) e redes de baixa largura de banda
@@ -49,7 +68,7 @@ Construída como progressive web app (PWA) otimizada para integração MiniPay, 
 ### Segurança
 
 - **Não-Custodial**: Usuários mantêm controle total de seus fundos
-- **Autenticação Privy**: Carteiras embedded com suporte a passkey
+- **Autenticação Privy**: Carteiras embutidas com suporte a passkey
 - **Log de Auditoria**: Histórico de transações em tempo real via Supabase
 - **Verificação de Smart Contract**: Todos contratos verificados no explorador de blocos Celo
 
@@ -66,13 +85,14 @@ Construída como progressive web app (PWA) otimizada para integração MiniPay, 
 - [Next.js 14](https://nextjs.org/) - Framework React com App Router
 - [TypeScript](https://www.typescriptlang.org/) - Desenvolvimento type-safe
 - [Tailwind CSS](https://tailwindcss.com/) - Estilos utility-first
-- [Framer Motion](https://www.framer.com/motion/) - Animações hardware-accelerated
+- [Framer Motion](https://www.framer.com/motion/) - Animações aceleradas por hardware
 
 **Blockchain**:
 
 - [Celo](https://celo.org/) - Rede blockchain L2 (Sepolia testnet)
 - [cUSD](https://docs.celo.org/protocol/stability) - Stablecoin Celo Dollar
 - [SocialConnect](https://docs.celo.org/protocol/identity) - Protocolo de identidade descentralizada
+- [ODIS](https://docs.celo.org/protocol/identity/odis) - Serviço de identidade descentralizada oblivious
 
 **Infraestrutura**:
 
@@ -132,6 +152,27 @@ Contribuições são bem-vindas. Por favor siga estas diretrizes:
 4. Execute testes: `pnpm test`
 5. Push para seu fork: `git push origin feature/descricao`
 6. Envie um pull request com descrição detalhada
+
+## Estrutura do Projeto
+
+```
+puente/
+├── apps/
+│   ├── web/                    # Aplicação frontend Next.js
+│   │   ├── src/
+│   │   │   ├── app/           # Páginas App Router
+│   │   │   ├── components/    # Componentes React
+│   │   │   ├── lib/           # Utilidades e configurações
+│   │   │   └── types/         # Definições TypeScript
+│   │   └── public/            # Assets estáticos
+│   └── contracts/             # Desenvolvimento de smart contracts
+│       ├── contracts/         # Contratos Solidity
+│       ├── scripts/           # Scripts de deploy
+│       └── test/              # Testes de contratos
+├── docs/                      # Documentação
+├── brandkit/                  # Assets de marca
+└── turbo.json                 # Configuração Turborepo
+```
 
 ## 🔬 Pesquisa e Registro de Decisões
 
