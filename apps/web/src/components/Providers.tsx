@@ -23,10 +23,26 @@ function SyncWrapper({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+// Get Privy App ID with fallback for build-time safety
+const PRIVY_APP_ID = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
+
 export function Providers({ children }: { children: React.ReactNode }) {
+  // Prevent PrivyProvider from throwing during static prerendering
+  // when environment variables are not available
+  if (!PRIVY_APP_ID) {
+    console.warn(
+      "[Providers] NEXT_PUBLIC_PRIVY_APP_ID not set, skipping PrivyProvider"
+    );
+    return (
+      <QueryClientProvider client={queryClient}>
+        <WagmiProvider config={wagmiConfig}>{children}</WagmiProvider>
+      </QueryClientProvider>
+    );
+  }
+
   return (
     <PrivyProvider
-      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ""}
+      appId={PRIVY_APP_ID}
       config={{
         loginMethods: ["email", "wallet"],
         appearance: {
