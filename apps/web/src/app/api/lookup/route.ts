@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { OdisUtils } from "@celo/identity";
-import { AuthenticationMethod } from "@celo/identity/lib/odis/query";
-import { newKit } from "@celo/contractkit";
+
+// Force dynamic rendering to prevent static generation
+export const dynamic = "force-dynamic";
+// Prevent edge runtime - use Node.js for @celo/identity compatibility
+export const runtime = "nodejs";
 
 // Config
 const SEPOLIA_RPC = "https://forno.celo-sepolia.celo-testnet.org";
@@ -12,6 +14,13 @@ const ACCOUNT_ADDRESS = process.env.SERVICE_WALLET_ADDRESS;
 
 export async function POST(request: Request) {
   try {
+    // Dynamic imports to avoid build-time bundling issues with @celo packages
+    const { OdisUtils } = await import("@celo/identity");
+    const { AuthenticationMethod } = await import(
+      "@celo/identity/lib/odis/query"
+    );
+    const { newKit } = await import("@celo/contractkit");
+
     const { phoneNumber } = await request.json();
 
     if (!phoneNumber) {
