@@ -14,7 +14,7 @@ import {
   EyeOff,
   QrCode,
 } from "lucide-react";
-import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { Button } from "@/components/ui/button";
 import { SendForm } from "@/features/transactions/components/SendForm";
 import { BalanceCard } from "@/features/dashboard/components/BalanceCard";
@@ -66,7 +66,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen relative w-full overflow-hidden bg-background text-foreground">
-      <AnimatedBackground />
+      <AmbientBackground />
 
       <div className="relative z-10 container mx-auto px-4 py-6 flex flex-col gap-6 max-w-md md:max-w-2xl">
         {/* Header */}

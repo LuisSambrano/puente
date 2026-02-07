@@ -2,7 +2,7 @@
 
 import { ShieldCheck } from "lucide-react";
 
-export function TrustBadge() {
+export function VerificationStatus() {
   return (
     <div className="flex justify-center w-full py-6 opacity-60 hover:opacity-100 transition-opacity duration-500">
       <div className="flex items-center gap-2 px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full backdrop-blur-sm border border-black/5 dark:border-white/5">

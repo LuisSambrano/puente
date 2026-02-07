@@ -49,7 +49,7 @@ const products = [
   },
 ];
 
-export default function ThreeProducts() {
+export default function ServicesGrid() {
   return (
     <section id="products" className="max-w-7xl mx-auto px-6 py-20">
       <motion.div

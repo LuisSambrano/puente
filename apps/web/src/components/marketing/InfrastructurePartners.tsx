@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, Code2, Lock } from "lucide-react";
 
-export default function TrustBadges() {
+export default function InfrastructurePartners() {
   return (
     <section className="py-20 bg-zinc-950 border-t border-zinc-900">
       <div className="container px-4 text-center">

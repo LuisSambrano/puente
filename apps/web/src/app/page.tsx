@@ -2,15 +2,13 @@
 
 import { usePrivy } from "@privy-io/react-auth";
 import Header from "@/components/marketing/Header";
-import MarqueeBanner from "@/components/marketing/MarqueeBanner";
-import Hero from "@/components/marketing/Hero";
-import ValueProp from "@/components/marketing/ValueProp";
-import ThreeProducts from "@/components/marketing/ThreeProducts";
-import PartnersCarousel from "@/components/marketing/PartnersCarousel";
-import ProcessSteps from "@/components/marketing/ProcessSteps";
+import LandingHero from "@/components/marketing/LandingHero";
+import ServicesGrid from "@/components/marketing/ServicesGrid";
+import InfrastructurePartners from "@/components/marketing/InfrastructurePartners";
+import AnnouncementsBar from "@/components/marketing/AnnouncementsBar";
+import CallToAction from "@/components/marketing/CallToAction";
 import Testimonial from "@/components/marketing/Testimonial";
 import Timeline from "@/components/marketing/Timeline";
-import FinalCTA from "@/components/marketing/FinalCTA";
 import Footer from "@/components/marketing/Footer";
 
 export default function Home() {
@@ -56,15 +54,14 @@ export default function Home() {
         So we start with Marquee.
       */}
 
-      <MarqueeBanner />
-      <Hero />
-      <ValueProp />
-      <ThreeProducts />
-      <PartnersCarousel />
-      <ProcessSteps />
+      <AnnouncementsBar />
+      <LandingHero />
+      <InfrastructurePartners />
+      <ServicesGrid />
+      <CallToAction />
       <Testimonial />
       <Timeline />
-      <FinalCTA />
+      <CallToAction />
       <Footer />
     </div>
   );

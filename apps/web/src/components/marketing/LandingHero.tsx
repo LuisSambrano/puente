@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
-export default function Hero() {
+export default function LandingHero() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-20 md:py-32">
       <motion.div

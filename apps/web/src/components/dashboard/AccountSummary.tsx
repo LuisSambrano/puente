@@ -3,12 +3,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-interface BalanceHeroProps {
+interface AccountSummaryProps {
   cUSD: string; // Formatted balance (e.g., "1,250.00")
   isLoading?: boolean;
 }
 
-export function BalanceHero({ cUSD, isLoading }: BalanceHeroProps) {
+export function AccountSummary({ cUSD, isLoading }: AccountSummaryProps) {
   const [showLocal, setShowLocal] = useState(false);
   const VES_RATE = 75; // Hardcoded generic rate for MVP
 

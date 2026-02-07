@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export function AnimatedBackground() {
+export function AmbientBackground() {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       {/* Soft Mesh Gradient */}

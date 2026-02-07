@@ -1,4 +1,4 @@
-export default function MarqueeBanner() {
+export default function AnnouncementsBar() {
   const text = "Envíos disponibles 24/7 · Sin límites · Sin fronteras";
 
   return (

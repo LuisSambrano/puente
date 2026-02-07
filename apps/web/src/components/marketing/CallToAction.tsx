@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function FinalCTA() {
+export default function CallToAction() {
   return (
     <section className="py-32 px-6 text-center relative overflow-hidden">
       {/* Background Glow */}

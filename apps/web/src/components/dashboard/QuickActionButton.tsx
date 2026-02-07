@@ -3,19 +3,19 @@
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 
-interface ActionRingProps {
+interface QuickActionButtonProps {
   icon: LucideIcon;
   label: string;
   onClick?: () => void;
   gradient?: string; // Optional custom gradient
 }
 
-export function ActionRing({
+export function QuickActionButton({
   icon: Icon,
   label,
   onClick,
   gradient,
-}: ActionRingProps) {
+}: QuickActionButtonProps) {
   // Default Conic Gradient simulating metal/glass reflection
   const defaultGradient =
     "conic-gradient(from 180deg at 50% 50%, #E8F5EE 0deg, #2EB078 120deg, #E8F5EE 240deg, #2EB078 360deg)";
