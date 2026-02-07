@@ -66,6 +66,28 @@ Send/Receive cUSD │ Medical/Emergency│ Support Creators
 
 ---
 
+## 🔑 SocialConnect Setup (Phone Identity)
+
+This project uses **Celo SocialConnect** to map phone numbers to wallet addresses. To run the Issuer service (Supabase Edge Function), you need to configure the following secrets:
+
+1.  **Generate an Issuer Wallet:**
+    ```bash
+    npx tsx scripts/generate-wallet.ts
+    ```
+2.  **Fund the Wallet:** Use the [Celo Sepolia Faucet](https://faucet.celo.org/celo-sepolia).
+3.  **Set Supabase Secrets:**
+    ```bash
+    pnpm exec supabase secrets set \
+      TWILIO_ACCOUNT_SID=your_sid \
+      TWILIO_AUTH_TOKEN=your_token \
+      TWILIO_FROM_NUMBER=your_number \
+      ISSUER_PRIVATE_KEY=your_generated_key
+    ```
+4.  **Deploy the Function:**
+    ```bash
+    pnpm exec supabase functions deploy socialconnect-issuer --no-verify-jwt
+    ```
+
 ## 🏗️ Tech Stack
 
 <div align="center">

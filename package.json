@@ -38,7 +38,8 @@
     "lint-staged": "^16.2.7",
     "supabase": "^2.75.5",
     "turbo": "^1.10.16",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "viem": "^2.45.1"
   },
   "pnpm": {
     "overrides": {
@@ -48,5 +49,9 @@
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@celo/blind-threshold-bls": "1.0.0-beta",
+    "@celo/identity": "^5.1.2"
   }
 }
