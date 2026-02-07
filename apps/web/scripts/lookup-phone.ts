@@ -1,75 +1,100 @@
+// @ts-nocheck
 import { OdisUtils } from "@celo/identity";
-import { AuthenticationMethod } from "@celo/identity/lib/odis/query";
-import { newKit } from "@celo/contractkit";
+import { OdisContextName } from "@celo/identity/lib/odis/query";
 import { config } from "dotenv";
 import path from "path";
+import {
+  createPublicClient,
+  createWalletClient,
+  http,
+  type Address,
+} from "viem";
+import { celoAlfajores } from "viem/chains";
+import { privateKeyToAccount } from "viem/accounts";
+import { federatedAttestationsABI } from "@celo/abis";
+import { readContract } from "viem/actions";
 
-// Load env from .env.local
+// Load .env.local
 config({ path: path.resolve(__dirname, "../.env.local") });
 
-// CELO SEPOLIA RPC (Testnet)
 const SEPOLIA_RPC = "https://forno.celo-sepolia.celo-testnet.org";
+const FEDERATED_ATTESTATIONS_ADDRESS =
+  "0xD52Ac6Ae87fca373106cF000B81e7A540B2791e5" as Address;
 
-const kit = newKit(SEPOLIA_RPC);
+async function lookupPhone(phoneNumber: string) {
+  const PRIVATE_KEY = process.env.SERVICE_WALLET_PRIVATE_KEY;
+  const ACCOUNT_ADDRESS = process.env.SERVICE_WALLET_ADDRESS;
 
-// SERVICE WALLET (Ideally should be loaded from env, using a dummy for script structural check)
-// In production this must be a funded account
-const PRIVATE_KEY = process.env.SERVICE_WALLET_PRIVATE_KEY;
-const ACCOUNT_ADDRESS = process.env.SERVICE_WALLET_ADDRESS;
-
-async function lookup() {
   if (!PRIVATE_KEY || !ACCOUNT_ADDRESS) {
-    console.error("❌ Missing SERVICE_WALLET credentials in .env.local");
-    process.exit(1);
+    throw new Error("Missing environment variables");
   }
 
-  // Add account to kit
-  kit.connection.addAccount(PRIVATE_KEY);
-  kit.defaultAccount = ACCOUNT_ADDRESS as `0x${string}`;
+  // Initialize viem clients
+  const issuer = privateKeyToAccount(PRIVATE_KEY as `0x${string}`);
 
-  const phoneNumber = "+5491155555555"; // Test Number
-  console.log(`🔎 Looking up ${phoneNumber} on SocialConnect...`);
+  const walletClient = createWalletClient({
+    chain: celoAlfajores,
+    transport: http(SEPOLIA_RPC),
+    account: issuer,
+  });
 
-  // 0. Pre-Flight: Quota Farming (For Fresh Wallets)
-  console.log("🚜 Checking/Farming ODIS Quota...");
-  const accounts = await kit.web3.eth.getAccounts();
-  const balance = await kit.web3.eth.getBalance(ACCOUNT_ADDRESS as string);
-  console.log(`💰 Balance: ${kit.web3.utils.fromWei(balance, "ether")} CELO`);
+  const publicClient = createPublicClient({
+    chain: celoAlfajores,
+    transport: http(SEPOLIA_RPC),
+  });
 
-  // Perform 5 self-transfers to generate history (Cost: ~0.005 CELO)
-  for (let i = 0; i < 5; i++) {
-    console.log(`🔄 Farming Tx ${i + 1}/5...`);
-    try {
-      const tx = await kit.sendTransaction({
-        from: ACCOUNT_ADDRESS as string,
-        to: ACCOUNT_ADDRESS as string,
-        value: kit.web3.utils.toWei("0.001", "ether"),
-      });
-      await tx.waitReceipt();
-    } catch (e) {
-      console.warn("⚠️ Farming Tx Warning:", e);
+  // Service Context
+  const serviceContext = OdisUtils.Query.getServiceContext(
+    OdisContextName.ALFAJORES
+  );
+
+  // Auth Signer
+  const authSigner = {
+    authenticationMethod: OdisUtils.Query.AuthenticationMethod.WALLET_KEY,
+    sign191: (args: { message: string; account: Address }) => {
+      return walletClient.signMessage(args);
+    },
+  };
+
+  console.log(`Looking up phone: ${phoneNumber}`);
+
+  // Get obfuscated identifier
+  const { obfuscatedIdentifier } =
+    await OdisUtils.Identifier.getObfuscatedIdentifier(
+      phoneNumber,
+      OdisUtils.Identifier.IdentifierPrefix.PHONE_NUMBER,
+      issuer.address,
+      authSigner,
+      serviceContext
+    );
+
+  console.log(`Obfuscated ID: ${obfuscatedIdentifier}`);
+
+  // Query on-chain registry
+  const [_countsPerIssuer, accounts, _signers] = await readContract(
+    publicClient,
+    {
+      abi: federatedAttestationsABI,
+      functionName: "lookupAttestations",
+      address: FEDERATED_ATTESTATIONS_ADDRESS,
+      args: [obfuscatedIdentifier as `0x${string}`, [issuer.address]],
     }
-  }
-  console.log("✅ Quota Farmed. Attempting Lookup...");
+  );
 
-  try {
-    // 1. Get ODIS Service Context (Alfajores - Context works for Sepolia too usually)
-    const serviceContext = OdisUtils.Query.getServiceContext(
-      "alfajores" as any
-    );
+  console.log(`Found ${accounts.length} addresses:`);
+  accounts.forEach((addr, i) => {
+    console.log(`  ${i + 1}. ${addr}`);
+  });
 
-    // 2. Authenticate
-
-    // This part differs heavily based on "Federated" (SocialConnect) vs "Old" Attestations.
-    // For SocialConnect we verify against an Issuer.
-
-    console.log("✅ ODIS Interaction Successful (Pepper obtained).");
-    console.log(
-      "⚠️ Actual address resolution requires a registered Issuer mapping."
-    );
-  } catch (error) {
-    console.error("❌ Lookup Failed:", error);
-  }
+  return accounts;
 }
 
-lookup();
+// CLI
+const phone = process.argv[2];
+if (!phone) {
+  console.error("Usage: tsx scripts/lookup-phone.ts <phone-number>");
+  console.error("Example: tsx scripts/lookup-phone.ts +5491155555555");
+  process.exit(1);
+}
+
+lookupPhone(phone).catch(console.error);

@@ -11,7 +11,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@celo/contractkit": "^10.0.3",
+    "@celo/abis": "^14.0.1",
     "@celo/identity": "^5.1.2",
     "@headlessui/react": "^2.2.9",
     "@privy-io/react-auth": "^3.12.0",

@@ -1,4 +1,13 @@
 import { NextResponse } from "next/server";
+import {
+  createPublicClient,
+  createWalletClient,
+  http,
+  type Address,
+} from "viem";
+import { celoAlfajores } from "viem/chains";
+import { privateKeyToAccount } from "viem/accounts";
+import { federatedAttestationsABI } from "@celo/abis";
 
 // Force dynamic rendering to prevent static generation
 export const dynamic = "force-dynamic";
@@ -7,6 +16,8 @@ export const runtime = "nodejs";
 
 // Config
 const SEPOLIA_RPC = "https://forno.celo-sepolia.celo-testnet.org";
+const FEDERATED_ATTESTATIONS_ADDRESS =
+  "0xD52Ac6Ae87fca373106cF000B81e7A540B2791e5" as Address; // Alfajores
 
 // Environment Variables check
 const PRIVATE_KEY = process.env.SERVICE_WALLET_PRIVATE_KEY;
@@ -14,12 +25,9 @@ const ACCOUNT_ADDRESS = process.env.SERVICE_WALLET_ADDRESS;
 
 export async function POST(request: Request) {
   try {
-    // Dynamic imports to avoid build-time bundling issues with @celo packages
+    // Dynamic imports to avoid build-time bundling issues
     const { OdisUtils } = await import("@celo/identity");
-    const { AuthenticationMethod } = await import(
-      "@celo/identity/lib/odis/query"
-    );
-    const { newKit } = await import("@celo/contractkit");
+    const { OdisContextName } = await import("@celo/identity/lib/odis/query");
 
     const { phoneNumber } = await request.json();
 
@@ -37,67 +45,76 @@ export async function POST(request: Request) {
       );
     }
 
-    // Initialize Kit
-    const kit = newKit(SEPOLIA_RPC);
-    kit.connection.addAccount(PRIVATE_KEY);
-    kit.defaultAccount = ACCOUNT_ADDRESS as `0x${string}`;
+    // Initialize viem clients (NO contractkit)
+    const issuer = privateKeyToAccount(PRIVATE_KEY as `0x${string}`);
 
-    // 1. Context
+    const walletClient = createWalletClient({
+      chain: celoAlfajores,
+      transport: http(SEPOLIA_RPC),
+      account: issuer,
+    });
+
+    const publicClient = createPublicClient({
+      chain: celoAlfajores,
+      transport: http(SEPOLIA_RPC),
+    });
+
+    // 1. Service Context (ODIS)
     const serviceContext = OdisUtils.Query.getServiceContext(
-      "alfajores" as any
+      OdisContextName.ALFAJORES
     );
 
-    // 2. Auth
+    // 2. Auth Signer (viem pattern, NO contractkit)
     const authSigner: any = {
-      authenticationMethod: AuthenticationMethod.WALLET_KEY,
-      contractKit: kit,
+      authenticationMethod: OdisUtils.Query.AuthenticationMethod.WALLET_KEY,
+      sign191: (args: { message: string; account: Address }) => {
+        return walletClient.signMessage(args);
+      },
     };
 
-    const { pepper, phoneHash } =
-      await OdisUtils.PhoneNumberIdentifier.getPhoneNumberIdentifier(
+    console.log(`[API] Looking up phone: ${phoneNumber}`);
+
+    // 3. Get obfuscated identifier from ODIS
+    const { obfuscatedIdentifier } =
+      await OdisUtils.Identifier.getObfuscatedIdentifier(
         phoneNumber,
-        ACCOUNT_ADDRESS,
+        OdisUtils.Identifier.IdentifierPrefix.PHONE_NUMBER,
+        issuer.address,
         authSigner,
         serviceContext
       );
 
     console.log(
-      `[API] ODIS Success. Pepper prefix: ${pepper.substring(0, 5)}...`
+      `[API] Obfuscated ID: ${obfuscatedIdentifier.substring(0, 10)}...`
     );
-    console.log(`[API] Computed Hash: ${phoneHash}`);
 
     // 4. Query On-Chain Registry (Federated Attestations)
-    // "Who owns this phone number?"
+    // Using viem's readContract directly
+    const { readContract } = await import("viem/actions");
 
-    // Connect to Contract
-    const federatedAttestations =
-      await kit.contracts.getFederatedAttestations();
+    const [_countsPerIssuer, accounts, _signers] = await readContract(
+      publicClient,
+      {
+        abi: federatedAttestationsABI,
+        functionName: "lookupAttestations",
+        address: FEDERATED_ATTESTATIONS_ADDRESS,
+        args: [obfuscatedIdentifier as `0x${string}`, [issuer.address]],
+      }
+    );
 
-    // Lookup Matches (In production, you might query specific reputable Issuers)
-    // This returns a list of Attestations objects
-    const attestations = await federatedAttestations.lookupAttestations(
-      phoneHash,
-      [ACCOUNT_ADDRESS]
-    ); // Checking against self as issuer for now, or generally
+    console.log(`[API] Found ${accounts.length} addresses`);
 
-    // Note: lookupAttestations usually filters by trusted issuers.
-    // For this Lab, we'll try to see if ANYONE verified it, or fail over to Mock.
+    let resolvedAddress: Address | null = null;
 
-    let resolvedAddress = null;
-
-    if (attestations.accounts.length > 0) {
-      // Just take the first one for MVP
-      // resolvedAddress = attestations.accounts[0];
-      // Logic depends on SDK return shape, usually it's { accounts: [], counts: 0 }
+    if (accounts.length > 0) {
+      resolvedAddress = accounts[0] as Address;
     }
 
     // --- LAB FALLBACK (FOR DEMO/TESTING ONLY) ---
-    // Since we haven't set up a full Issuer Node (Complex), we simulate the registry
-    // for our specific test number.
     if (!resolvedAddress && process.env.NODE_ENV !== "production") {
       if (phoneNumber === "+5491155555555") {
         console.log("[LAB] Using Mock Registry Fallback");
-        resolvedAddress = ACCOUNT_ADDRESS; // Resolve to Service Wallet for demo loopback
+        resolvedAddress = ACCOUNT_ADDRESS as Address;
       }
     }
     // --------------------------------------------
@@ -106,7 +123,7 @@ export async function POST(request: Request) {
       return NextResponse.json({
         found: true,
         address: resolvedAddress,
-        identifier: phoneHash,
+        identifier: obfuscatedIdentifier,
       });
     } else {
       return NextResponse.json(
