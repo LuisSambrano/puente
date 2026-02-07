@@ -20,11 +20,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://puente.lat"),
   title: {
-    default: "Puente | The Glass Vault",
+    default: "Puente | Remittances Without Intermediaries",
     template: "%s | Puente",
   },
   description:
-    "Financial Dignity for the Venezuelan Diaspora. Send, Save, and Settle in cUSD with the security of Celo L2.",
+    "Send money to Venezuela for <$0.01 in 5 seconds. No intermediaries. Built on Celo blockchain.",
   applicationName: "Puente App",
   authors: [{ name: "Puente Team", url: "https://puente.lat" }],
   keywords: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     locale: "es_VE",
     url: "https://puente.lat",
     siteName: "Puente",
-    title: "Puente: Tu Bóveda de Cristal",
+    title: "Puente: Remesas Sin Intermediarios",
     description:
-      "Envía y ahorra en dólares digitales sin fricción. Construido sobre Celo.",
+      "$3.8B enviados anualmente. 15% perdido en fees. Ya no más. Remesas blockchain para Venezuela.",
     images: [
       {
         url: "/og-preview.jpg", // We need to ensure this exists or use a placeholder
@@ -54,8 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Puente: Financial Dignity",
-    description: "Zero fees. Instant settlement. The future of remittances.",
+    title: "Puente: Remittances Without Intermediaries",
+    description:
+      "<$0.01 fees • 5 seconds • Transparent blockchain. Send money to Venezuela.",
     creator: "@puente_app",
   },
   icons: {

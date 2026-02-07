@@ -2,14 +2,14 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Puente: Bóveda Digital",
+    name: "Puente: Remesas Sin Intermediarios",
     short_name: "Puente",
     description:
-      "Envía, Ahorra y Gasta sin fronteras. La evolución de las remesas en Venezuela.",
+      "Envía dinero a Venezuela por <$0.01 en 5 segundos. Sin intermediarios. Blockchain Celo.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F9FAFB",
-    theme_color: "#2EB078",
+    background_color: "#000000",
+    theme_color: "#2ECC71",
     icons: [
       {
         src: "/android-chrome-192x192.png",

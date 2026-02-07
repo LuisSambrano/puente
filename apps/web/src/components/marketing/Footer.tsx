@@ -18,8 +18,8 @@ export default function Footer() {
             <span className="text-2xl font-bold text-white">Puente</span>
           </Link>
           <p className="text-white/50 max-w-sm">
-            La bóveda de cristal de Venezuela. Infraestructura financiera
-            abierta para la próxima generación.
+            Infraestructura financiera abierta para la próxima generación.
+            Construido sobre Celo.
           </p>
         </div>
 
