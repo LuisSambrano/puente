@@ -13,6 +13,7 @@ export function useUserSync() {
   const { ready, authenticated, getAccessToken, user } = usePrivy();
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncedUser, setSyncedUser] = useState<any>(null);
+  const [isSocialVerified, setIsSocialVerified] = useState(false);
 
   useEffect(() => {
     const syncIdentity = async () => {
@@ -40,6 +41,11 @@ export function useUserSync() {
 
         const data = await res.json();
         setSyncedUser(data.user);
+
+        // Check if there is a verified phone in the user metadata/database
+        // This is a placeholder for actual DB check that we will implement next
+        setIsSocialVerified(!!data.user?.phone_verified);
+
         console.log("✅ Identity Synced:", data.user);
       } catch (err) {
         console.error("❌ Sync Error:", err);
@@ -51,5 +57,5 @@ export function useUserSync() {
     syncIdentity();
   }, [ready, authenticated, user, getAccessToken]);
 
-  return { isSyncing, syncedUser };
+  return { isSyncing, syncedUser, isSocialVerified, setIsSocialVerified };
 }

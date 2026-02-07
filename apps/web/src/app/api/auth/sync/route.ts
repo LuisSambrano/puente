@@ -49,10 +49,8 @@ export async function POST(req: NextRequest) {
           privy_user_id: userId,
           email: email || null,
           wallet_address: wallet || null,
-          // If we have a phone, we could store it if the schema allowed,
-          // but for now we stick to the blueprint: email, wallet.
+          phone_number: phone || null,
           last_synced_at: new Date().toISOString(),
-          // We can add validation logic here later (KYC tiers etc)
         },
         { onConflict: "privy_user_id" }
       )

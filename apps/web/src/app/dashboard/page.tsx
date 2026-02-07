@@ -11,21 +11,21 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Wallet,
   ArrowUpRight,
   ArrowDownLeft,
   History,
   LogOut,
-  Eye,
-  EyeOff,
-  QrCode,
+  ShieldCheck,
 } from "lucide-react";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { Button } from "@/components/ui/button";
 import { SendForm } from "@/features/transactions/components/SendForm";
 import { BalanceCard } from "@/features/dashboard/components/BalanceCard";
+import { SocialConnectVerification } from "@/features/identity/components/SocialConnectVerification";
+import { useUserSync } from "@/lib/hooks/useUserSync";
 
 // Mock data for initial implementation
 const TRANSACTIONS = [
@@ -58,8 +58,8 @@ const TRANSACTIONS = [
 export default function DashboardPage() {
   const { ready, authenticated, user, logout } = usePrivy();
   const router = useRouter();
-  const [showBalance, setShowBalance] = useState(true);
-  const [view, setView] = useState<"home" | "send">("home");
+  const [view, setView] = useState<"home" | "send" | "identity">("home");
+  const { isSocialVerified, setIsSocialVerified } = useUserSync();
 
   // Protected route logic
   useEffect(() => {
@@ -105,96 +105,134 @@ export default function DashboardPage() {
         </header>
 
         {/* Dynamic Content Area */}
-        {view === "home" ? (
-          <>
-            <BalanceCard
-              onSend={() => setView("send")}
-              onReceive={() => console.log("Receive clicked")}
-              onQR={() => console.log("QR clicked")}
-            />
+        <AnimatePresence mode="wait">
+          {view === "home" ? (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="space-y-6"
+            >
+              <BalanceCard
+                onSend={() => setView("send")}
+                onReceive={() => console.log("Receive clicked")}
+                onQR={() => console.log("QR clicked")}
+              />
 
-            {/* Transactions */}
-            <section>
-              <div className="flex justify-between items-center mb-4 px-2">
-                <h3 className="font-semibold text-lg">Actividad Reciente</h3>
-                <button className="text-sm text-primary hover:underline">
-                  Ver todo
-                </button>
-              </div>
+              {/* Transactions */}
+              <section>
+                <div className="flex justify-between items-center mb-4 px-2">
+                  <h3 className="font-semibold text-lg">Actividad Reciente</h3>
+                  <button className="text-sm text-primary hover:underline">
+                    Ver todo
+                  </button>
+                </div>
 
-              <div className="space-y-3">
-                {TRANSACTIONS.map((tx, idx) => (
-                  <motion.div
-                    key={tx.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 + idx * 0.1 }}
-                    className="flex items-center justify-between p-4 rounded-2xl glass-frost border border-white/5 hover:bg-white/5 transition-colors cursor-pointer"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                          tx.type === "receive"
-                            ? "bg-emerald-500/20 text-emerald-400"
-                            : "bg-orange-500/20 text-orange-400"
-                        }`}
-                      >
-                        {tx.type === "receive" ? (
-                          <ArrowDownLeft className="w-5 h-5" />
-                        ) : (
-                          <ArrowUpRight className="w-5 h-5" />
-                        )}
+                <div className="space-y-3">
+                  {TRANSACTIONS.map((tx, idx) => (
+                    <motion.div
+                      key={tx.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 + idx * 0.1 }}
+                      className="flex items-center justify-between p-4 rounded-2xl glass-frost border border-white/5 hover:bg-white/5 transition-colors cursor-pointer"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                            tx.type === "receive"
+                              ? "bg-emerald-500/20 text-emerald-400"
+                              : "bg-orange-500/20 text-orange-400"
+                          }`}
+                        >
+                          {tx.type === "receive" ? (
+                            <ArrowDownLeft className="w-5 h-5" />
+                          ) : (
+                            <ArrowUpRight className="w-5 h-5" />
+                          )}
+                        </div>
+                        <div>
+                          <p className="font-medium">{tx.counterparty}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {tx.date}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-medium">{tx.counterparty}</p>
+                      <div className="text-right">
+                        <p
+                          className={`font-medium ${
+                            tx.type === "receive"
+                              ? "text-emerald-400"
+                              : "text-foreground"
+                          }`}
+                        >
+                          {tx.type === "receive" ? "+" : "-"}${tx.amount}
+                        </p>
                         <p className="text-xs text-muted-foreground">
-                          {tx.date}
+                          {tx.currency}
                         </p>
                       </div>
-                    </div>
-                    <div className="text-right">
-                      <p
-                        className={`font-medium ${
-                          tx.type === "receive"
-                            ? "text-emerald-400"
-                            : "text-foreground"
-                        }`}
-                      >
-                        {tx.type === "receive" ? "+" : "-"}${tx.amount}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {tx.currency}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </section>
-          </>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            className="w-full"
-          >
-            <button
-              onClick={() => setView("home")}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4 pl-1"
+                    </motion.div>
+                  ))}
+                </div>
+              </section>
+            </motion.div>
+          ) : view === "send" ? (
+            <motion.div
+              key="send"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              className="w-full"
             >
-              <ArrowDownLeft className="w-4 h-4 rotate-90" /> Volver al Inicio
-            </button>
-            <SendForm />
-          </motion.div>
-        )}
+              <button
+                onClick={() => setView("home")}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4 pl-1"
+              >
+                <ArrowDownLeft className="w-4 h-4 rotate-90" /> Volver al Inicio
+              </button>
+              <SendForm />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="identity"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="w-full"
+            >
+              <button
+                onClick={() => setView("home")}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4 pl-1"
+              >
+                <ArrowDownLeft className="w-4 h-4 rotate-90" /> Volver al Inicio
+              </button>
+              <SocialConnectVerification
+                onSuccess={() => setIsSocialVerified(true)}
+                initialPhone={user?.phone?.number}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Bottom Nav Placeholder (MiniPay style) */}
       <nav className="fixed bottom-0 left-0 w-full glass-deep-frost border-t border-white/10 pb-6 pt-4 px-8 z-50 flex justify-between items-center md:hidden">
-        <NavItem icon={Wallet} label="Inicio" active />
+        <NavItem
+          icon={Wallet}
+          label="Inicio"
+          active={view === "home"}
+          onClick={() => setView("home")}
+        />
         <NavItem icon={History} label="Actividad" />
         <div className="w-12" /> {/* Spacer for FAB if needed */}
-        <NavItem icon={LogOut} label="Perfil" />
+        <NavItem
+          icon={ShieldCheck}
+          label="Identidad"
+          active={view === "identity"}
+          onClick={() => setView("identity")}
+        />
       </nav>
     </div>
   );
@@ -230,15 +268,18 @@ function NavItem({
   icon: Icon,
   label,
   active = false,
+  onClick,
 }: {
   icon: any;
   label: string;
   active?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <div
-      className={`flex flex-col items-center gap-1 ${
-        active ? "text-primary" : "text-muted-foreground"
+      onClick={onClick}
+      className={`flex flex-col items-center gap-1 cursor-pointer transition-colors ${
+        active ? "text-primary" : "text-muted-foreground hover:text-foreground"
       }`}
     >
       <Icon className={`w-6 h-6 ${active ? "fill-current" : ""}`} />

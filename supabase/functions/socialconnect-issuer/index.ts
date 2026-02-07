@@ -137,13 +137,30 @@ serve(async (req) => {
         transport: http(),
       });
 
-      // MOCK REGISTRATION for now until ODIS WASM is solved
-      console.log(`[MOCK CHAIN] Registering ${phone} -> ${account} on FederatedAttestations`);
-      
+      // Update internal DB: Flag user as verified
+      const { error: updateError } = await supabaseClient
+        .from("users")
+        .update({ 
+          phone_verified: true, 
+          phone_number: phone,
+          last_synced_at: new Date().toISOString() 
+        })
+        .eq("wallet_address", account);
+
+      if (updateError) {
+        console.warn("User record update failed after verification:", updateError.message);
+        // We don't throw here to avoid failing the whole request if the user record doesn't exist yet,
+        // although in our flow it should exist because of the sync hook.
+      }
+
       // Cleanup OTP
       await supabaseClient.from("verification_codes").delete().eq("id", record.id);
 
-      return new Response(JSON.stringify({ success: true, txHash: "0xMOCK_HASH_FOR_BUILDATHON" }), {
+      return new Response(JSON.stringify({ 
+        success: true, 
+        message: "Verification successful",
+        txHash: "0xMOCK_HASH_FOR_BUILDATHON" 
+      }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
