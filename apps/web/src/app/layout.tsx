@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import Header from "@/components/marketing/Header";
+import Header from "@/components/landing/Header";
 import { FloatingFooter } from "@/components/FloatingFooter";
 import { Providers } from "@/components/Providers";
 import { NetworkGuard } from "@/components/NetworkGuard";
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json", // We will generate this via route or file
 };
 
-import MobileBottomNav from "@/components/marketing/MobileBottomNav";
+import MobileBottomNav from "@/components/landing/MobileBottomNav";
 
 export default function RootLayout({
   children,

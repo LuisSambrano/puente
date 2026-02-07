@@ -16,7 +16,7 @@ const wagmiConfig = createConfig({
   ssr: true,
 });
 
-import { useUserSync } from "@/hooks/useUserSync";
+import { useUserSync } from "@/lib/hooks/useUserSync";
 
 function SyncWrapper({ children }: { children: React.ReactNode }) {
   useUserSync();

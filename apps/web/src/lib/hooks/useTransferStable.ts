@@ -6,8 +6,8 @@ import {
 } from "wagmi";
 import { parseEther } from "viem";
 import { celoSepolia } from "viem/chains";
-import { CELO_TOKENS } from "../config/tokens";
-import ERC20_ABI from "../utils/abis/erc20.json";
+import { CELO_TOKENS } from "@/config/tokens";
+import ERC20_ABI from "@/utils/abis/erc20.json";
 
 export function useTransferStable() {
   const { address } = useAccount();

@@ -1,15 +1,15 @@
 "use client";
 
 import { usePrivy } from "@privy-io/react-auth";
-import Header from "@/components/marketing/Header";
-import LandingHero from "@/components/marketing/LandingHero";
-import ServicesGrid from "@/components/marketing/ServicesGrid";
-import InfrastructurePartners from "@/components/marketing/InfrastructurePartners";
-import AnnouncementsBar from "@/components/marketing/AnnouncementsBar";
-import CallToAction from "@/components/marketing/CallToAction";
-import Testimonial from "@/components/marketing/Testimonial";
-import Timeline from "@/components/marketing/Timeline";
-import Footer from "@/components/marketing/Footer";
+import Header from "@/components/landing/Header";
+import LandingHero from "@/components/landing/LandingHero";
+import ServicesGrid from "@/components/landing/ServicesGrid";
+import InfrastructurePartners from "@/components/landing/InfrastructurePartners";
+import AnnouncementsBar from "@/components/landing/AnnouncementsBar";
+import CallToAction from "@/components/landing/CallToAction";
+import Testimonial from "@/components/landing/Testimonial";
+import Timeline from "@/components/landing/Timeline";
+import Footer from "@/components/landing/Footer";
 
 export default function Home() {
   const { ready, authenticated } = usePrivy();

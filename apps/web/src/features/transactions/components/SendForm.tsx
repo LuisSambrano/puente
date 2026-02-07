@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTransferStable } from "@/hooks/useTransferStable";
-import { useSocialConnect } from "@/hooks/useSocialConnect";
+import { useTransferStable } from "@/lib/hooks/useTransferStable";
+import { useSocialConnect } from "@/lib/hooks/useSocialConnect";
 import { isAddress } from "viem";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
