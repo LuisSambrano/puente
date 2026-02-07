@@ -35,7 +35,7 @@
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.6.0",
     "viem": "^2.45.0",
-    "wagmi": "^2.19.5",
+    "wagmi": "^3.4.2",
     "web3": "^4.16.0"
   },
   "devDependencies": {
