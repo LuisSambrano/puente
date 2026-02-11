@@ -8,22 +8,44 @@
 
 import { createClient } from "@supabase/supabase-js";
 
+import { getClientEnv, getServerEnv } from "./env";
+
 // WARNING: This client uses the SERVICE ROLE KEY.
 // It bypasses Row Level Security (RLS).
 // NEVER import this on the client side.
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+// Lazy singleton — validated at first access via Zod
+let _supabaseAdmin: ReturnType<typeof createClient> | null = null;
 
-if (!supabaseUrl || !supabaseServiceRoleKey) {
-  console.warn(
-    "⚠️ Supabase Service Role Key missing. Admin operations will fail."
-  );
+/**
+ * Returns a Supabase client with service role privileges.
+ * Validates environment variables on first call.
+ *
+ * @throws {Error} If SUPABASE_SERVICE_ROLE_KEY or NEXT_PUBLIC_SUPABASE_URL are missing
+ */
+export function getSupabaseAdmin() {
+  if (!_supabaseAdmin) {
+    const { NEXT_PUBLIC_SUPABASE_URL } = getClientEnv();
+    const { SUPABASE_SERVICE_ROLE_KEY } = getServerEnv();
+
+    _supabaseAdmin = createClient(
+      NEXT_PUBLIC_SUPABASE_URL,
+      SUPABASE_SERVICE_ROLE_KEY,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      }
+    );
+  }
+  return _supabaseAdmin;
 }
 
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false,
+// Backward-compatible export for existing imports
+// Uses lazy getter to avoid crashing at module load time
+export const supabaseAdmin = new Proxy({} as ReturnType<typeof createClient>, {
+  get(_target, prop) {
+    return (getSupabaseAdmin() as Record<string | symbol, unknown>)[prop];
   },
 });
