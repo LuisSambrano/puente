@@ -9,16 +9,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { PrivyClient } from "@privy-io/server-auth";
+import { getClientEnv, getServerEnv } from "@/lib/env";
 
 // Force dynamic rendering to prevent static generation errors
 export const dynamic = "force-dynamic";
 
 // Lazy initialize Privy client to avoid build-time errors
 function getPrivyClient() {
-  return new PrivyClient(
-    process.env.NEXT_PUBLIC_PRIVY_APP_ID || "",
-    process.env.PRIVY_APP_SECRET || ""
-  );
+  const { NEXT_PUBLIC_PRIVY_APP_ID } = getClientEnv();
+  const { PRIVY_APP_SECRET } = getServerEnv();
+  return new PrivyClient(NEXT_PUBLIC_PRIVY_APP_ID, PRIVY_APP_SECRET);
 }
 
 export async function GET(req: NextRequest) {
