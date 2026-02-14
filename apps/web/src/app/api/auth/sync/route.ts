@@ -9,14 +9,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { PrivyClient } from "@privy-io/server-auth";
-
-// Initialize Privy Server Client for verification
-const privy = new PrivyClient(
-  process.env.NEXT_PUBLIC_PRIVY_APP_ID || "",
-  process.env.PRIVY_APP_SECRET || ""
-);
+import { getClientEnv, getServerEnv } from "@/lib/env";
 
 export async function POST(req: NextRequest) {
+  // Initialize Privy Server Client for verification
+  // Done inside the handler to ensure env vars are ready
+  const { NEXT_PUBLIC_PRIVY_APP_ID } = getClientEnv();
+  const { PRIVY_APP_SECRET } = getServerEnv();
+  const privy = new PrivyClient(NEXT_PUBLIC_PRIVY_APP_ID, PRIVY_APP_SECRET);
   try {
     // 1. Get the Authorization header
     const authHeader = req.headers.get("authorization");
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
           wallet_address: wallet || null,
           phone_number: phone || null,
           last_synced_at: new Date().toISOString(),
-        },
+        } as any,
         { onConflict: "privy_user_id" }
       )
       .select()

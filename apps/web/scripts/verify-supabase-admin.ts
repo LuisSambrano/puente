@@ -20,12 +20,11 @@ async function main() {
     privy_user_id: "did:privy:test_admin_insert",
     email: "admin_test@antigravity.dev",
     wallet_address: "0x0000000000000000000000000000000000000000",
-    full_name: "Antigravity Test Bot",
   };
 
   const { data, error } = await supabaseAdmin
     .from("users")
-    .upsert(testUser, { onConflict: "privy_user_id" })
+    .upsert(testUser as any, { onConflict: "privy_user_id" })
     .select()
     .single();
 

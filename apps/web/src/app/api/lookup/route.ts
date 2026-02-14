@@ -16,6 +16,7 @@ import {
 import { celoAlfajores } from "viem/chains";
 import { privateKeyToAccount } from "viem/accounts";
 import { federatedAttestationsABI } from "@celo/abis";
+import { getServerEnv } from "@/lib/env";
 
 // Force dynamic rendering to prevent static generation
 export const dynamic = "force-dynamic";
@@ -27,12 +28,11 @@ const SEPOLIA_RPC = "https://forno.celo-sepolia.celo-testnet.org";
 const FEDERATED_ATTESTATIONS_ADDRESS =
   "0xD52Ac6Ae87fca373106cF000B81e7A540B2791e5" as Address; // Alfajores
 
-// Environment Variables check
-const PRIVATE_KEY = process.env.SERVICE_WALLET_PRIVATE_KEY;
-const ACCOUNT_ADDRESS = process.env.SERVICE_WALLET_ADDRESS;
-
 export async function POST(request: Request) {
   try {
+    const { SERVICE_WALLET_PRIVATE_KEY, SERVICE_WALLET_ADDRESS } =
+      getServerEnv();
+
     // Dynamic imports to avoid build-time bundling issues
     const { OdisUtils } = await import("@celo/identity");
     const { OdisContextName } = await import("@celo/identity/lib/odis/query");
@@ -46,15 +46,10 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!PRIVATE_KEY || !ACCOUNT_ADDRESS) {
-      return NextResponse.json(
-        { error: "Server misconfiguration (Wallet)" },
-        { status: 500 }
-      );
-    }
-
     // Initialize viem clients (NO contractkit)
-    const issuer = privateKeyToAccount(PRIVATE_KEY as `0x${string}`);
+    const issuer = privateKeyToAccount(
+      SERVICE_WALLET_PRIVATE_KEY as `0x${string}`
+    );
 
     const walletClient = createWalletClient({
       chain: celoAlfajores,
@@ -122,7 +117,7 @@ export async function POST(request: Request) {
     if (!resolvedAddress && process.env.NODE_ENV !== "production") {
       if (phoneNumber === "+5491155555555") {
         console.log("[LAB] Using Mock Registry Fallback");
-        resolvedAddress = ACCOUNT_ADDRESS as Address;
+        resolvedAddress = SERVICE_WALLET_ADDRESS as Address;
       }
     }
     // --------------------------------------------
@@ -154,7 +149,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { error: error.message || "Lookup Failed" },
+      { error: "Lookup Failed" },
       { status: 500 }
     );
   }
