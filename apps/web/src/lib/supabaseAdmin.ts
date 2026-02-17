@@ -44,8 +44,9 @@ export function getSupabaseAdmin() {
 
 // Backward-compatible export for existing imports
 // Uses lazy getter to avoid crashing at module load time
-export const supabaseAdmin = new Proxy({} as ReturnType<typeof createClient>, {
+// Cast to any to avoid build-time type inference issues with generated types
+export const supabaseAdmin: any = new Proxy({} as any, {
   get(_target, prop) {
-    return (getSupabaseAdmin() as Record<string | symbol, unknown>)[prop];
+    return (getSupabaseAdmin() as any)[prop];
   },
 });

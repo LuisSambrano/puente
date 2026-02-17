@@ -7,6 +7,7 @@
  */
 
 import { NextResponse } from "next/server";
+import { isValidE164PhoneNumber } from "@/utils/validation";
 import {
   createPublicClient,
   createWalletClient,
@@ -39,9 +40,12 @@ export async function POST(request: Request) {
 
     const { phoneNumber } = await request.json();
 
-    if (!phoneNumber) {
+    if (!phoneNumber || !isValidE164PhoneNumber(phoneNumber)) {
       return NextResponse.json(
-        { error: "Phone Number required" },
+        {
+          error:
+            "Invalid Phone Number. Must be in E.164 format (e.g. +1234567890)",
+        },
         { status: 400 }
       );
     }
@@ -154,7 +158,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { error: error.message || "Lookup Failed" },
+      { error: "Lookup Failed" },
       { status: 500 }
     );
   }
