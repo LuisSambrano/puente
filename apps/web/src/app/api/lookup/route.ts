@@ -16,6 +16,7 @@ import {
 import { celoAlfajores } from "viem/chains";
 import { privateKeyToAccount } from "viem/accounts";
 import { federatedAttestationsABI } from "@celo/abis";
+import { isValidE164PhoneNumber } from "@/utils/validation";
 
 // Force dynamic rendering to prevent static generation
 export const dynamic = "force-dynamic";
@@ -39,9 +40,12 @@ export async function POST(request: Request) {
 
     const { phoneNumber } = await request.json();
 
-    if (!phoneNumber) {
+    if (!phoneNumber || !isValidE164PhoneNumber(phoneNumber)) {
       return NextResponse.json(
-        { error: "Phone Number required" },
+        {
+          error:
+            "Invalid phone number format. Expected E.164 (e.g., +1234567890)",
+        },
         { status: 400 }
       );
     }
@@ -80,7 +84,10 @@ export async function POST(request: Request) {
       },
     };
 
-    console.log(`[API] Looking up phone: ${phoneNumber}`);
+    // Mask phone number for logs
+    const maskedPhone =
+      phoneNumber.slice(0, 4) + "****" + phoneNumber.slice(-2);
+    console.log(`[API] Looking up phone: ${maskedPhone}`);
 
     // 3. Get obfuscated identifier from ODIS
     const { obfuscatedIdentifier } =
@@ -154,7 +161,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { error: error.message || "Lookup Failed" },
+      { error: "Lookup Failed" },
       { status: 500 }
     );
   }
